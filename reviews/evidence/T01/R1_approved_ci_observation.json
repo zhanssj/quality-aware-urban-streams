@@ -1,0 +1,36 @@
+{
+  "type": "reviewer_observation_of_remote_ci_not_local_test_execution",
+  "review_verdict": "APPROVED_T01_R1",
+  "repository": "zhanssj/quality-aware-urban-streams",
+  "head_sha": "daa0a0455365cc0f185fe3df5e73401d03dad6c8",
+  "run_id": 41417970896,
+  "run_url": "https://github.com/zhanssj/quality-aware-urban-streams/actions/runs/41417970896",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "id": 125186356234,
+      "os": "ubuntu-latest",
+      "conclusion": "success",
+      "pytest_passed": 85,
+      "pytest_skipped": 0,
+      "ruff_check": "PASS",
+      "ruff_format": "PASS"
+    },
+    {
+      "id": 125186355988,
+      "os": "windows-latest",
+      "conclusion": "success",
+      "pytest_passed": 84,
+      "pytest_skipped": 1,
+      "skip_reason": "Platform has no wider-than-float64 longdouble",
+      "ruff_check": "PASS",
+      "ruff_format": "PASS"
+    }
+  ],
+  "local_tests_this_review": "NOT_RUN",
+  "raw_hdf5_read_this_review": false,
+  "remote_repository_modified": false,
+  "reader_blob": "d752e666c87518d925b76a3e3645c7c6f2da5d39",
+  "dtype_tests_blob": "29f2f8558653b6f1b0eeb572c9d25ca0e35c15c1",
+  "input_contract_blob": "79f38cd4e9d8208a22a2fad43b3fa6e196c21ac9"
+}

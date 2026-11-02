@@ -1,0 +1,51 @@
+{
+  "split": "validation",
+  "units_verified": false,
+  "units": "file_units",
+  "interpretation": "diagnostic_only",
+  "target_policy": "source-valid shared intersection",
+  "models": {
+    "persistence": {
+      "mae": 1.5499771784510274,
+      "rmse": 3.9303319286056606,
+      "scheduled": 281088,
+      "predicted": 281088,
+      "prediction_coverage": 1.0,
+      "missing_predictions": 0,
+      "eligible_truth": 262904,
+      "scored": 262904,
+      "skipped_missing_truth": 18184,
+      "skipped_missing_any_prediction": 0,
+      "scored_target_ids_sha256": "66d6bd0a436ea863a5c586888156146e37af70ed42a30c461ade23dc92506128",
+      "macro_station_mae": 1.5653548128588266
+    },
+    "standard": {
+      "mae": 1.9085767341210202,
+      "rmse": 4.026499848233516,
+      "scheduled": 281088,
+      "predicted": 281088,
+      "prediction_coverage": 1.0,
+      "missing_predictions": 0,
+      "eligible_truth": 262904,
+      "scored": 262904,
+      "skipped_missing_truth": 18184,
+      "skipped_missing_any_prediction": 0,
+      "scored_target_ids_sha256": "66d6bd0a436ea863a5c586888156146e37af70ed42a30c461ade23dc92506128",
+      "macro_station_mae": 1.9224878718658533
+    },
+    "quality_aware": {
+      "mae": 1.9022502283940146,
+      "rmse": 4.026686198717474,
+      "scheduled": 281088,
+      "predicted": 281088,
+      "prediction_coverage": 1.0,
+      "missing_predictions": 0,
+      "eligible_truth": 262904,
+      "scored": 262904,
+      "skipped_missing_truth": 18184,
+      "skipped_missing_any_prediction": 0,
+      "scored_target_ids_sha256": "66d6bd0a436ea863a5c586888156146e37af70ed42a30c461ade23dc92506128",
+      "macro_station_mae": 1.915900107398663
+    }
+  }
+}

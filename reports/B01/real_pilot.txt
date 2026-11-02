@@ -1,0 +1,7 @@
+code_commit: 0a70134e32d86c5216e6f42e9647adb780756c64
+dirty_tree: false
+command: python -m aqstream train --config configs/baseline.yaml
+
+B01 fit: 62338 train labels; fixed cohort 32 stations
+PASS B01 train/validation; artifacts: artifacts\B01-20261102T095148Z-df565b77
+exit_code: 0

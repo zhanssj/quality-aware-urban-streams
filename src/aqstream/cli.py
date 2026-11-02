@@ -159,15 +159,43 @@ def prepare(config_path: Path) -> Path:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Quality-aware sensor stream research core (T01)")
+    parser = argparse.ArgumentParser(description="Quality-aware sensor stream research core (B01)")
     subparsers = parser.add_subparsers(dest="command", required=True)
     smoke = subparsers.add_parser("prepare", help="read at most 168 train rows and 2–4 stations")
     smoke.add_argument("--config", required=True, type=Path)
+    train = subparsers.add_parser("train", help="fixed bounded B01 train/validation experiment")
+    train.add_argument("--config", required=True, type=Path)
+    evaluate = subparsers.add_parser("evaluate", help="recompute shared-target validation metrics")
+    evaluate.add_argument("--predictions", required=True, type=Path)
+    evaluate.add_argument("--out", required=True, type=Path)
+    evaluate.add_argument("--split", choices=["validation"], default="validation")
+    export = subparsers.add_parser(
+        "export-review", help="export whitelisted B01 source/docs/evidence"
+    )
+    export.add_argument("--out", required=True, type=Path)
     args = parser.parse_args(argv)
     try:
-        manifest = prepare(args.config)
+        if args.command == "prepare":
+            manifest = prepare(args.config)
+            print(f"PASS bounded loader smoke; manifest: {manifest}")
+        elif args.command == "train":
+            from aqstream.experiment import run_experiment
+
+            output = run_experiment(args.config)
+            print(f"PASS B01 train/validation; artifacts: {output}")
+        elif args.command == "evaluate":
+            from aqstream.artifacts import write_json
+            from aqstream.evaluation import evaluate_predictions
+
+            metrics = evaluate_predictions(args.predictions)
+            args.out.parent.mkdir(parents=True, exist_ok=True)
+            write_json(args.out, metrics)
+            print(f"PASS diagnostic validation metrics: {args.out}")
+        elif args.command == "export-review":
+            from aqstream.artifacts import export_review
+
+            print(f"PASS review bundle: {export_review(REPOSITORY, args.out)}")
     except (DataContractError, OSError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 2
-    print(f"PASS bounded loader smoke; manifest: {manifest}")
     return 0

@@ -1,5 +1,29 @@
 # Решения и открытые вопросы
 
+## 2026-11-02: B01 назначен владельцем
+
+- T01 принят внешним ChatGPT-ревью на daa0a04 (reviews/T01-R1.md), решение подтверждено владельцем.
+- Владелец слил T01 в main. Main 444f816 имеет тот же полный tree, что принятый daa0a04
+  (squash merge, не ancestry); это проверено git diff. Рабочая ветка codex/B01-features-baselines.
+- B01 = T02 + T03 выполняется без промежуточного внешнего APPROVED. До T03 обязательные
+  тесты причинности T02 должны пройти. Это внутренний gate, не внешнее одобрение.
+- Итог: один handoffs/B01.md, READY_FOR_REVIEW и остановка. T04–T08 и test-2025 не назначены.
+- Протокол, train-only fit, отдельная истина, закрытый 2025 и запрет самовольного merge сохранены.
+- В пилоте фиксируем 32 станции по train-списку, seed 2026; PCG64 choice без возвращения из
+  лексикографически сортированных ID, итоговые ID сортируются. Никакого отбора по validation.
+- Train fitting моделей ограничивается расписанием target_index % 8 == 0 по всем станциям;
+  это value-independent subsample (около 105120 scheduled rows при 32 станциях), общий для методов.
+  Медианы fit на всех доступных train значениях выбранных станций. Validation сохраняется полностью.
+  Причина subsampling — bounded CPU/RAM pilot, не результат ошибок; sample IDs сохраняются до fit.
+- Лимиты пилота: 2 вычислительных потока, HDF5 chunk 168 строк, prediction batch 168 шагов,
+  до 120000 scheduled train rows, 2 GiB RSS guard. HGB: max_iter=60, max_leaf_nodes=15,
+  learning_rate=0.1, l2_regularization=1.0, min_samples_leaf=20, early_stopping=false.
+- У первой позиции target=0 origin=-1; нет истории, используется train-only fallback.
+  Rolling с ddof=0 по причинно заполненным позициям, до начала сетки padding fallback.
+  Missing ratios считают недоступный padding пропусками. Age=-1 при has_history=false;
+  иначе origin_index-last_observed_index. Индексы глобальные по непрерывной сетке 2021–2024.
+  Календарные признаки отключены, единицы UNVERIFIED, ошибки диагностические в units файла.
+
 | ID | Статус | Решение |
 |---|---|---|
 | D01 | Перенесено из обсуждения | PM2.5, AirQualityBench, качество входов и запаздывание |

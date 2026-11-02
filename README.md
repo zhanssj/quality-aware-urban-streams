@@ -1,9 +1,9 @@
 # Quality-Aware Urban Streams
 
 Экспериментальная основа статьи о прогнозировании PM2.5 при неполных и запаздывающих входах.
-Реализован T01: Python-пакет, read-only HDF5 reader, ограниченный loader smoke и синтетические проверки.
-Обучение моделей и расчёт метрик относятся к последующим задачам. Статус и evidence: [STATUS.md](STATUS.md),
-[handoffs/T01.md](handoffs/T01.md). План: [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md).
+Реализованы T01 и блок B01 (T02 + T03): read-only loader, причинные признаки, три baseline,
+train-only preprocessing и общий оценщик validation. Статус и evidence: [STATUS.md](STATUS.md),
+[handoffs/B01.md](handoffs/B01.md). План: [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md).
 
 ## Установка
 
@@ -37,8 +37,9 @@ export AQ_DATA_ROOT="$PWD/airqualitybench_tools/data"
 Результат — небольшой manifest в `artifacts/T01-*/`, без копирования исходных значений.
 `AQ_ARTIFACT_ROOT` меняет папку результатов (по умолчанию `artifacts`).
 Доступны `python -m aqstream ...` и установленная команда `aqstream ...`.
-`configs/baseline.yaml` — план T03; запуск через `prepare` завершается ошибкой.
-Команды `train`, `replay`, `evaluate`, `benchmark`, `export-review` пока отсутствуют.
+`configs/baseline.yaml` — фиксированный bounded B01 pilot; запуск через `prepare` завершается ошибкой.
+Работают `train --config`, `evaluate --predictions --out`, `export-review --out`.
+Контракт и команды B01: [docs/B01_METHOD.md](docs/B01_METHOD.md). `replay` и `benchmark` пока отсутствуют.
 
 ## Локальные проверки без сети и исходного датасета
 
@@ -70,4 +71,4 @@ CI запускает только эти проверки и CLI help; HDF5, cr
   результатом прогноза для статьи. См. [протокол](docs/EXPERIMENT_PROTOCOL.md).
 
 Работа ведётся в отдельных `codex/Txx-*` ветках. `main` обновляется после независимого ревью владельцем.
-Материалы для ChatGPT Pro: [docs/REVIEW_T01_RU.md](docs/REVIEW_T01_RU.md).
+Материалы текущего блока для ChatGPT Pro: [handoffs/B01.md](handoffs/B01.md).

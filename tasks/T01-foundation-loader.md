@@ -1,6 +1,6 @@
 # T01: Основа проекта и загрузчик
 
-Статус: READY_FOR_REVIEW. Code commit и evidence: handoffs/T01.md.
+Статус: APPROVED внешним ревью, подтверждён владельцем. reviews/T01-R1.md; handoffs/T01.md — история реализации.
 
 Предусловия: Нет. Это первая задача.
 
