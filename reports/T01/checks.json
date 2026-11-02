@@ -1,0 +1,87 @@
+{
+  "code_commit": "252fbb2f670eb9131e264d51adcb08e634ccba24",
+  "dirty_tree_at_start": false,
+  "checks": [
+    {
+      "check": "ruff_check",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "src",
+        "tests"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "ruff_check.txt"
+    },
+    {
+      "check": "ruff_format",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "src",
+        "tests"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "ruff_format.txt"
+    },
+    {
+      "check": "pytest",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "pytest.txt"
+    },
+    {
+      "check": "cli_help",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "aqstream",
+        "--help"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "cli_help.txt"
+    },
+    {
+      "check": "pip_check",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "pip_check.txt"
+    },
+    {
+      "check": "real_smoke",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "aqstream",
+        "prepare",
+        "--config",
+        "configs/smoke.yaml"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "real_smoke.txt"
+    }
+  ],
+  "recorded_at_utc": "2026-11-02T13:33:44.590763+05:00",
+  "timestamp_note": "Recorded after checks completed; this is not their start time."
+}

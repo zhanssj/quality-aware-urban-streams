@@ -1,0 +1,98 @@
+{
+  "run_id": "T01-20261102T083344Z-b9ef1390",
+  "task_id": "T01",
+  "status": "PASS",
+  "purpose": "bounded_loader_smoke_only",
+  "code_commit": "252fbb2f670eb9131e264d51adcb08e634ccba24",
+  "dirty_tree": false,
+  "config_sha256": "20da64425c97ab400bdb67d485db59dbd11c5f20a251e40d490e7e97af1d5ad4",
+  "dependency_lock_sha256": "e3b8390d373635b0376213bb5b9868df9feb468285dd421b142936570ac630b4",
+  "input": {
+    "file": "aq_compact_2023.h5",
+    "size_bytes_observed": 277680451,
+    "mtime_ns_observed": 1793600932356847200,
+    "recorded_sha256": "952556ead9a3f62bfa9d08145f93fa050a8486b3e7fe4da8623029c4d2fde315",
+    "sha256_verified_in_this_run": false,
+    "dataset_revision": "bbdcdd257bc7aed69598d423ca034d03f7ce015e",
+    "provenance": "existing download_manifest.json; not reverified",
+    "provenance_manifest_sha256": "efb978d1bdbe8f6c72aead46bab21784bf1690fe7d7ade54045a5604c200bbb5",
+    "recorded_size_matches": true
+  },
+  "selection": {
+    "year": 2023,
+    "station_ids": [
+      "1000",
+      "1003",
+      "1006",
+      "1010"
+    ],
+    "parameter_requested": "PM2.5",
+    "start": 0,
+    "stop": 168,
+    "chunk_size": 24,
+    "sanitized_blocks_sha256": "dfb27dbc7ab707741a9c660c7276fd11f591a68d43f6cf8fa13f17d486db3f72",
+    "hash_encoding": "per block: row-major little-endian float64 then bool bytes"
+  },
+  "source_tensor_shape": [
+    8760,
+    3720,
+    6
+  ],
+  "output_shape": [
+    168,
+    4
+  ],
+  "blocks_read": 7,
+  "available_elements": 656,
+  "unavailable_elements": 16,
+  "available_by_station": {
+    "1000": 154,
+    "1003": 166,
+    "1006": 168,
+    "1010": 168
+  },
+  "split_definition": {
+    "train": [
+      2021,
+      2022,
+      2023
+    ],
+    "validation": [
+      2024
+    ],
+    "test": [
+      2025
+    ]
+  },
+  "test_gate": "CLOSED",
+  "units_verified": false,
+  "time_semantics": "row_index_only; provisional_interval_end for future replay",
+  "model_training": "NOT_RUN",
+  "predictions": "NOT_RUN",
+  "timing": {
+    "block_read_wall_seconds": 0.008298999862745404,
+    "feature_computation_ms": null,
+    "inference_ms": null,
+    "simulated_wait_minutes": null
+  },
+  "python_version": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+  "dependencies": {
+    "numpy": "2.5.4",
+    "h5py": "3.16.0",
+    "PyYAML": "6.0.3"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "cpu": "Intel64 Family 6 Model 141 Stepping 1, GenuineIntel",
+    "logical_cpus": 12
+  },
+  "command_argv": [
+    "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\src\\aqstream\\__main__.py",
+    "prepare",
+    "--config",
+    "configs/smoke.yaml"
+  ],
+  "exit_code": 0,
+  "started_at": "2026-11-02T08:33:44.439352+00:00",
+  "finished_at": "2026-11-02T08:33:44.555857+00:00"
+}

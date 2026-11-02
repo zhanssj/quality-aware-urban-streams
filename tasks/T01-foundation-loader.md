@@ -1,6 +1,6 @@
 # T01: Основа проекта и загрузчик
 
-Статус: IN_PROGRESS (evidence и итоговый commit будут в handoffs/T01.md).
+Статус: READY_FOR_REVIEW. Code commit и evidence: handoffs/T01.md.
 
 Предусловия: Нет. Это первая задача.
 
