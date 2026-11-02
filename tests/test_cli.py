@@ -72,7 +72,7 @@ def test_cli_missing_environment_is_error(source, monkeypatch, capsys):
 
 
 @pytest.mark.parametrize("command", ["train", "replay", "evaluate", "benchmark", "export-review"])
-def test_unimplemented_commands_fail(command):
+def test_commands_without_required_inputs_fail(command):
     with pytest.raises(SystemExit) as error:
         main([command])
     assert error.value.code == 2

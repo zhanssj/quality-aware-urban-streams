@@ -7,7 +7,10 @@ name = "quality-aware-urban-streams"
 version = "0.1.0"
 description = "Reproducible quality-aware urban sensor stream experiments"
 requires-python = ">=3.14"
-dependencies = ["numpy>=2.5,<3", "h5py>=3.16,<4", "PyYAML>=6,<7"]
+dependencies = [
+    "numpy>=2.5,<3", "h5py>=3.16,<4", "PyYAML>=6,<7",
+    "scikit-learn>=1.9,<2", "psutil>=7,<8", "joblib>=1.6,<2", "threadpoolctl>=3.7,<4",
+]
 
 [project.optional-dependencies]
 dev = ["pytest>=9,<10", "ruff>=0.17,<0.18"]

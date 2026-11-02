@@ -1,12 +1,19 @@
-# Planned T03 contract. No training command is implemented in T01.
-task_id: T03
-implemented: false
+# Fixed bounded B01 pilot. No hyperparameter search.
+task_id: B01
 train_years: [2021, 2022, 2023]
-validation_years: [2024]
-test_gate: CLOSED
+validation_year: 2024
 cohort_candidates: manifests/cohort_candidates_669.csv
 cohort_size: 32
 seed: 2026
-models: [Persistence, Standard, Quality-aware]
-units_verified: false
-time_semantics: provisional_interval_end
+train_stride: 8
+max_train_samples: 120000
+chunk_size: 168
+predict_batch_steps: 168
+threads: 2
+max_rss_mb: 2048
+model_params:
+  max_iter: 60
+  max_leaf_nodes: 15
+  learning_rate: 0.1
+  l2_regularization: 1.0
+  min_samples_leaf: 20

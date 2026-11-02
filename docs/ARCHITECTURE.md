@@ -35,18 +35,17 @@ Evaluator присоединяет truth после прогноза и счит
 Для первого сравнения использовать PM2.5 и bounded cohort. Сохранение промежуточных Parquet по конфигурации; не создавать миллион мелких файлов.
 Список 669 - кандидат на расширение после измерения ресурсов, не требование первого smoke-test.
 
-## Целевые команды (их ещё нет)
+## Реализованные команды B01
 
 ```text
 python -m aqstream prepare --config configs/smoke.yaml
 python -m aqstream train --config configs/baseline.yaml
-python -m aqstream evaluate --run-id <id> --split validation
-python -m aqstream replay --config configs/scenario.yaml
-python -m aqstream benchmark --config configs/benchmark.yaml
-python -m aqstream export-review --task T03 --out review_bundle.zip
+python -m aqstream evaluate --predictions artifacts/<run>/predictions_validation.csv --out artifacts/<run>/recomputed.json
+python -m aqstream export-review --out exports/B01-review.zip
 ```
 
 Не создавать интерфейс-команды, которые печатают успех без реализации. Не реализованная команда должна отсутствовать либо завершаться явной ошибкой.
+Replay и benchmark пока не реализованы и относятся к последующим задачам.
 Точные имена можно уточнить в T01, обновив документы и handoff.
 
 ## Запись прогноза
