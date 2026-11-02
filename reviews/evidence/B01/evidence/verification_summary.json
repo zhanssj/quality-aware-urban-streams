@@ -1,0 +1,50 @@
+{
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "dependencies": {
+    "numpy": "2.3.5",
+    "h5py": "3.15.1",
+    "scikit-learn": "1.8.0",
+    "pytest": "9.0.2",
+    "threadpoolctl": "3.6.0"
+  },
+  "full_repository_environment_reproduced": false,
+  "original_features_tests": {
+    "passed": 11,
+    "exit_code": 0
+  },
+  "reviewer_additional_tests": {
+    "passed": 14,
+    "exit_code": 0
+  },
+  "core_modules_modified": false,
+  "package_adapter": "features/__init__.py in local harness only re-exports verified causal.py symbols; not the repository initializer",
+  "network_clone": "Not performed: GitHub DNS unavailable from container. Source text retrieved through GitHub connector, then Git blob hashes verified.",
+  "real_hdf5_read": false,
+  "real_prediction_csv_read": false,
+  "ci_logs_observed": {
+    "run_id": 41425557327,
+    "head_sha": "bab6d90c0a6239e670ca80b458c12f00fdad5217",
+    "ubuntu": {
+      "job_id": 125211192591,
+      "passed": 106,
+      "skipped": 0,
+      "ruff": "pass",
+      "python": "3.14.9"
+    },
+    "windows": {
+      "job_id": 125211192962,
+      "passed": 105,
+      "skipped": 1,
+      "skip_reason": "Platform has no wider-than-float64 longdouble",
+      "ruff": "pass",
+      "python": "3.14.9"
+    }
+  },
+  "src_tree_verified": {
+    "pilot_commit": "0a70134e32d86c5216e6f42e9647adb780756c64",
+    "head_commit": "bab6d90c0a6239e670ca80b458c12f00fdad5217",
+    "aqstream_tree_sha": "85c47f7fc8e4b4ff65701e6830586716703851ad",
+    "equal": true
+  }
+}

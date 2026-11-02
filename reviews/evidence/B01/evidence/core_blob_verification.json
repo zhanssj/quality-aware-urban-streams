@@ -1,0 +1,37 @@
+{
+  "src/aqstream/data/reader.py": {
+    "expected_git_blob": "d752e666c87518d925b76a3e3645c7c6f2da5d39",
+    "actual_git_blob": "d752e666c87518d925b76a3e3645c7c6f2da5d39",
+    "matches": true
+  },
+  "src/aqstream/features/causal.py": {
+    "expected_git_blob": "92779d7803ad4a572d0fd527425181554ffca0d3",
+    "actual_git_blob": "92779d7803ad4a572d0fd527425181554ffca0d3",
+    "matches": true
+  },
+  "src/aqstream/evaluation.py": {
+    "expected_git_blob": "f4fa150ebac962a1c07fdaab1187aaa1cf94f6a2",
+    "actual_git_blob": "f4fa150ebac962a1c07fdaab1187aaa1cf94f6a2",
+    "matches": true
+  },
+  "src/aqstream/models.py": {
+    "expected_git_blob": "fe80e504111471e27bbc497a32ac58470cb1a418",
+    "actual_git_blob": "fe80e504111471e27bbc497a32ac58470cb1a418",
+    "matches": true
+  },
+  "src/aqstream/__init__.py": {
+    "expected_git_blob": "5262451c2c5d93f3d9399a83165c26079e3ab19d",
+    "actual_git_blob": "5262451c2c5d93f3d9399a83165c26079e3ab19d",
+    "matches": true
+  },
+  "src/aqstream/data/__init__.py": {
+    "expected_git_blob": "51bd3024738a47a39ebd5abff00c638ceb1791b3",
+    "actual_git_blob": "51bd3024738a47a39ebd5abff00c638ceb1791b3",
+    "matches": true
+  },
+  "tests/test_features.py": {
+    "expected_git_blob": "b62c99d05491a8b3b0eafebb482565705466d0be",
+    "actual_git_blob": "b62c99d05491a8b3b0eafebb482565705466d0be",
+    "matches": true
+  }
+}
