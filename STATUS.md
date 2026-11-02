@@ -1,6 +1,6 @@
 # Статус
 
-Состояние проекта: T01 READY_FOR_REVIEW. Код, проверки и handoff готовы; независимое ревью ожидается.
+Состояние проекта: T01 IN_PROGRESS — исправление только R1 из reviews/T01.md.
 Новый полный аудит: не назначен и не нужен.
 Текущая задача: T01. Приоритет: первый работающий исследовательский срез.
 Remote repository: https://github.com/zhanssj/quality-aware-urban-streams.git.
@@ -11,7 +11,7 @@ Time semantics of published HDF5: UNVERIFIED; development convention documented.
 
 | Задача | Статус | Code commit | Handoff | Review |
 |---|---|---|---|---|
-| T01 | READY_FOR_REVIEW | 252fbb2f670eb9131e264d51adcb08e634ccba24 | handoffs/T01.md | PENDING |
+| T01 | IN_PROGRESS | 252fbb2f670eb9131e264d51adcb08e634ccba24 (до R1) | handoffs/T01.md | CHANGES_REQUESTED: R1 |
 | T02 | TODO | - | - | - |
 | T03 | TODO | - | - | - |
 | T04 | TODO | - | - | - |

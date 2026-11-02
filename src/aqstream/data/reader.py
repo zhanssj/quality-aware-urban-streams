@@ -97,7 +97,16 @@ class HDF5Reader:
                 f"{path}: incompatible values/masks shapes: {values.shape}, {masks.shape}; "
                 "expected equal nonempty (time, station, parameter) tensors"
             )
-        if values.dtype.kind not in "fiu" or masks.dtype.kind not in "bfiu":
+        # A dtype-level guarantee avoids overflow/rounding without scanning values.
+        # All float16/32/64 and <=32-bit integers are exactly representable in float64.
+        safe_float = values.dtype.kind == "f" and values.dtype.itemsize in (2, 4, 8)
+        safe_integer = values.dtype.kind in "iu" and values.dtype.itemsize in (1, 2, 4)
+        if not (safe_float or safe_integer):
+            raise DataContractError(
+                f"{path}: unsupported values dtype {values.dtype}; expected float16/32/64 "
+                "or int8/16/32 or uint8/16/32 for lossless float64 conversion"
+            )
+        if masks.dtype.kind not in "bfiu":
             raise DataContractError(f"{path}: values/masks must have real numeric/boolean dtype")
         for name, length in (("station_ids", values.shape[1]), ("params", values.shape[2])):
             if handle[name].shape != (length,):
@@ -175,7 +184,7 @@ class HDF5Reader:
                     raw = handle["values"][left:right, columns, channel][:, restore]
                     mask = handle["masks"][left:right, columns, channel][:, restore]
                     valid = (mask == 1) & np.isfinite(raw)
-                    clean = np.where(valid, raw.astype(np.float64), np.nan)
+                    clean = np.where(valid, raw.astype(np.float64, casting="safe"), np.nan)
                     clean.setflags(write=False)
                     valid.setflags(write=False)
                     yield DataBlock(

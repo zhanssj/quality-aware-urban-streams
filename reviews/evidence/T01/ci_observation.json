@@ -1,0 +1,18 @@
+{
+  "reviewed_head": "103a6ef6c51702440649855db96ccc87aa620b59",
+  "workflow_run": 41414403841,
+  "read_via": "GitHub connector, not re-run by reviewer",
+  "ubuntu": {
+    "job_id": 125174624698,
+    "conclusion": "success",
+    "pytest_log_excerpt": "50 passed in 0.21s",
+    "python_from_log": "3.14.9"
+  },
+  "windows": {
+    "job_id": 125174625123,
+    "conclusion": "success",
+    "basis": "job/step summaries; full Windows log not fetched"
+  },
+  "code_commit": "252fbb2f670eb9131e264d51adcb08e634ccba24",
+  "core_subtree_sha_at_both_commits": "3e811e5a45727e5fd1760288411df8d5b68d9bbd"
+}
