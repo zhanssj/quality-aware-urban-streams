@@ -1,0 +1,3 @@
+code_commit: 252fbb2f670eb9131e264d51adcb08e634ccba24
+exit_code: 0
+PASS: imported context working-tree and committed SHA256; pinned installed versions; Git exclusions; no tracked ignored files; main unchanged; diff whitespace check.

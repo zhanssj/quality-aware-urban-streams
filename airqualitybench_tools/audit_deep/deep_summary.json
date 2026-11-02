@@ -1,0 +1,79 @@
+{
+  "scope": "Read-only descriptive PM2.5 diagnostics; no model training or test-based selection",
+  "cohort_file": "training_candidates_669.csv",
+  "cohort_sha256": "3091289f363b0768a6f42bc0772b54ba60c4ef397f172c55cdb78e0ff2d6e325",
+  "files": [
+    {
+      "year": 2021,
+      "rows": 8760,
+      "stations": 3720,
+      "annual_active_stations": 1913,
+      "fixed_train_cohort_stations": 669,
+      "mask_1_nonfinite_count": 0,
+      "steps_with_zero_usable_all_stations": 278,
+      "steps_with_zero_usable_fixed_cohort": 363,
+      "longest_below_10pct_fixed_cohort_steps": 912,
+      "timestamp_semantics_verified": false
+    },
+    {
+      "year": 2022,
+      "rows": 8760,
+      "stations": 3720,
+      "annual_active_stations": 2097,
+      "fixed_train_cohort_stations": 669,
+      "mask_1_nonfinite_count": 0,
+      "steps_with_zero_usable_all_stations": 2422,
+      "steps_with_zero_usable_fixed_cohort": 2564,
+      "longest_below_10pct_fixed_cohort_steps": 2568,
+      "timestamp_semantics_verified": false
+    },
+    {
+      "year": 2023,
+      "rows": 8760,
+      "stations": 3720,
+      "annual_active_stations": 2200,
+      "fixed_train_cohort_stations": 669,
+      "mask_1_nonfinite_count": 0,
+      "steps_with_zero_usable_all_stations": 503,
+      "steps_with_zero_usable_fixed_cohort": 740,
+      "longest_below_10pct_fixed_cohort_steps": 409,
+      "timestamp_semantics_verified": false
+    },
+    {
+      "year": 2024,
+      "rows": 8784,
+      "stations": 3720,
+      "annual_active_stations": 2245,
+      "fixed_train_cohort_stations": 669,
+      "mask_1_nonfinite_count": 0,
+      "steps_with_zero_usable_all_stations": 0,
+      "steps_with_zero_usable_fixed_cohort": 0,
+      "longest_below_10pct_fixed_cohort_steps": 9,
+      "timestamp_semantics_verified": false
+    },
+    {
+      "year": 2025,
+      "rows": 8760,
+      "stations": 3720,
+      "annual_active_stations": 2294,
+      "fixed_train_cohort_stations": 669,
+      "mask_1_nonfinite_count": 0,
+      "steps_with_zero_usable_all_stations": 0,
+      "steps_with_zero_usable_fixed_cohort": 0,
+      "longest_below_10pct_fixed_cohort_steps": 1,
+      "timestamp_semantics_verified": false
+    }
+  ],
+  "limitations": [
+    "Row indexes only: no inferred dates, timezone or hours.",
+    "Calibration, units and mask origins require source documentation.",
+    "Coincident gaps do not establish a collection failure or its cause.",
+    "Annual-active denominators are descriptive, not station-selection criteria.",
+    "Continuity/gaps are evaluated within each year, not across year boundaries.",
+    "Fully observed windows are counts for diagnosis, not a proposed filter on model targets.",
+    "First-stage file checksums should be retained for version tracking.",
+    "Only the three longest gaps per station/year and top 100 repeated internal intervals are exported.",
+    "No recovery of true arrival timestamps is attempted.",
+    "Do not tune the cohort or model based on 2025 diagnostic values."
+  ]
+}

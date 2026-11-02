@@ -1,0 +1,63 @@
+................FF                                                       [100%]
+=================================== FAILURES ===================================
+__________ test_finite_extended_float_must_not_become_valid_infinity ___________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-1/test_finite_extended_float_mus0')
+
+    def test_finite_extended_float_must_not_become_valid_infinity(tmp_path):
+        if np.finfo(np.longdouble).max <= np.finfo(np.float64).max:
+            pytest.skip("Platform has no wider-than-float64 longdouble")
+        values = np.full((1, 1, 1), np.longdouble("1e400"), dtype=np.longdouble)
+        try:
+            write_source(tmp_path, values)
+        except (TypeError, ValueError) as exc:
+            pytest.skip(f"This HDF5 build does not support extended floats: {exc}")
+        try:
+            b = next(HDF5Reader(tmp_path).iter_blocks(year=2023, station_ids=["s0"]))
+        except DataContractError:
+            return  # Explicitly rejecting unsupported numeric data is a valid policy.
+>       assert np.isfinite(b.values[b.source_valid]).all(), (
+            "Finite source value became inf while source_valid remained True")
+E       AssertionError: Finite source value became inf while source_valid remained True
+E       assert np.False_
+E        +  where np.False_ = <built-in method all of numpy.ndarray object at 0x7fe536499410>()
+E        +    where <built-in method all of numpy.ndarray object at 0x7fe536499410> = array([False]).all
+E        +      where array([False]) = <ufunc 'isfinite'>(array([inf]))
+E        +        where <ufunc 'isfinite'> = np.isfinite
+
+../review_tests/test_reader_review.py:112: AssertionError
+______________ test_large_integer_must_not_silently_change_value _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-1/test_large_integer_must_not_si0')
+
+    def test_large_integer_must_not_silently_change_value(tmp_path):
+        value = 2**53 + 1
+        write_source(tmp_path, np.full((1, 1, 1), value, dtype=np.uint64))
+        try:
+            b = next(HDF5Reader(tmp_path).iter_blocks(year=2023, station_ids=["s0"]))
+        except DataContractError:
+            return  # Rejecting integers that cannot be represented exactly is acceptable.
+        assert b.source_valid[0, 0]
+>       assert int(b.values[0, 0]) == value, "Accepted source integer was silently rounded"
+E       AssertionError: Accepted source integer was silently rounded
+E       assert 9007199254740992 == 9007199254740993
+E        +  where 9007199254740992 = int(np.float64(9007199254740992.0))
+
+../review_tests/test_reader_review.py:124: AssertionError
+=============================== warnings summary ===============================
+review_tests/test_reader_review.py::test_finite_extended_float_must_not_become_valid_infinity
+  /mnt/data/T01_review/source/src/aqstream/data/reader.py:178: RuntimeWarning: overflow encountered in cast
+    clean = np.where(valid, raw.astype(np.float64), np.nan)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../review_tests/test_reader_review.py::test_finite_extended_float_must_not_become_valid_infinity - AssertionError: Finite source value became inf while source_valid remained True
+assert np.False_
+ +  where np.False_ = <built-in method all of numpy.ndarray object at 0x7fe536499410>()
+ +    where <built-in method all of numpy.ndarray object at 0x7fe536499410> = array([False]).all
+ +      where array([False]) = <ufunc 'isfinite'>(array([inf]))
+ +        where <ufunc 'isfinite'> = np.isfinite
+FAILED ../review_tests/test_reader_review.py::test_large_integer_must_not_silently_change_value - AssertionError: Accepted source integer was silently rounded
+assert 9007199254740992 == 9007199254740993
+ +  where 9007199254740992 = int(np.float64(9007199254740992.0))
+2 failed, 16 passed, 1 warning in 0.22s

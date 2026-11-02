@@ -1,0 +1,35 @@
+[
+  {
+    "case": "float64",
+    "source_dtype": "float64",
+    "source_finite": true,
+    "source_repr": "1.25",
+    "output_repr": "1.25",
+    "output_finite": true,
+    "source_valid": true,
+    "warnings": []
+  },
+  {
+    "case": "float128",
+    "source_dtype": "float128",
+    "source_finite": true,
+    "source_repr": "1e+400",
+    "output_repr": "inf",
+    "output_finite": false,
+    "source_valid": true,
+    "warnings": [
+      "overflow encountered in cast"
+    ]
+  },
+  {
+    "case": "uint64",
+    "source_dtype": "uint64",
+    "source_finite": true,
+    "source_repr": "9007199254740993",
+    "output_repr": "9007199254740992.0",
+    "output_finite": true,
+    "source_valid": true,
+    "warnings": [],
+    "integer_exact": false
+  }
+]

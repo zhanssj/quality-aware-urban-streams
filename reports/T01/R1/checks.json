@@ -1,0 +1,109 @@
+{
+  "task_id": "T01",
+  "review_item": "R1",
+  "code_commit": "42e3a4457b6beed6adb6a273d0353fb5f05e9ab4",
+  "base_commit": "103a6ef6c51702440649855db96ccc87aa620b59",
+  "dirty_tree_at_start": false,
+  "started_at_utc": "2026-11-02T09:03:56.264594+00:00",
+  "finished_at_utc": "2026-11-02T09:04:00.437196+00:00",
+  "python_version": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+  "dependencies": {
+    "numpy": "2.5.4",
+    "h5py": "3.16.0",
+    "pytest": "9.2.0",
+    "ruff": "0.17.3"
+  },
+  "checks": [
+    {
+      "check": "original_synthetic",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "tests/test_reader.py",
+        "tests/test_cli.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "original_synthetic.txt"
+    },
+    {
+      "check": "review_regressions",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "tests/test_reader_review_regressions.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "review_regressions.txt"
+    },
+    {
+      "check": "dtype_contract",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "tests/test_reader_dtype_contract.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "dtype_contract.txt"
+    },
+    {
+      "check": "ruff_check",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "src",
+        "tests"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "ruff_check.txt"
+    },
+    {
+      "check": "ruff_format",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "src",
+        "tests"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "ruff_format.txt"
+    }
+  ],
+  "test_counts": {
+    "passed": 84,
+    "skipped": 1
+  },
+  "skip_reason": "Windows longdouble is not wider than float64; not counted as PASS",
+  "supplied_regression_tests_ast_unchanged": true,
+  "supplied_regression_tests_original_sha256": "62c64c3034dd7ce960a589fd55be84459bf431590374f06429e3841835305935",
+  "formatted_regression_tests_sha256": "a73e1b9a7178f8b5c51a0d88d20fbabfa14d8835bb0464486d0dc3638d70fca9",
+  "unchanged_paths_from_reviewed_head": [
+    "tests/conftest.py",
+    "tests/test_reader.py",
+    "tests/test_cli.py",
+    "requirements.lock.txt",
+    "configs/smoke.yaml",
+    "src/aqstream/config.py",
+    "src/aqstream/cli.py",
+    ".github/workflows/synthetic.yml"
+  ],
+  "real_data_smoke": "NOT_RUN: R1 uses synthetic data only",
+  "full_audit": "NOT_RUN",
+  "test_2025_hdf5": "NOT_RUN",
+  "T02": "NOT_STARTED"
+}

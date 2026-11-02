@@ -1,0 +1,7 @@
+task_id: T01
+year: 2023
+station_ids: ["1000", "1003", "1006", "1010"]
+start: 0
+stop: 168
+chunk_size: 24
+parameter: PM2.5

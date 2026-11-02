@@ -1,0 +1,15 @@
+{
+  "type": "specification_package_validation",
+  "file_count": 27,
+  "task_count": 8,
+  "cohort_rows": 669,
+  "checks": {
+    "required_files_present": true,
+    "markdown_fences_balanced": true,
+    "context_hashes_match": true,
+    "cohort_ids_unique": true
+  },
+  "application_tests": "NOT_RUN: application not implemented in this package",
+  "model_training": "NOT_RUN",
+  "repository_created": false
+}

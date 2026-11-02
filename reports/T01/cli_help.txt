@@ -1,0 +1,15 @@
+code_commit: 252fbb2f670eb9131e264d51adcb08e634ccba24
+dirty_tree_at_start: false
+command: ['C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe', '-m', 'aqstream', '--help']
+exit_code: 0
+
+usage: python.exe -m aqstream [-h] {prepare} ...
+
+Quality-aware sensor stream research core (T01)
+
+positional arguments:
+  {prepare}
+    prepare   read at most 168 train rows and 2–4 stations
+
+options:
+  -h, --help  show this help message and exit

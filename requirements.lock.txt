@@ -1,0 +1,13 @@
+# Observed installed versions on CPython 3.14.7 / Windows; T01.
+# Runtime, test, style and build dependencies. Install before --no-build-isolation.
+numpy==2.5.4
+h5py==3.16.0
+PyYAML==6.0.3
+pytest==9.2.0
+ruff==0.17.3
+setuptools==84.2.1
+iniconfig==2.3.1
+packaging==26.3
+pluggy==1.7.0
+Pygments==2.21.0
+colorama==0.4.6; sys_platform == "win32"

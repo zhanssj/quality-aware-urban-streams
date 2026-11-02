@@ -1,0 +1,12 @@
+# Planned T03 contract. No training command is implemented in T01.
+task_id: T03
+implemented: false
+train_years: [2021, 2022, 2023]
+validation_years: [2024]
+test_gate: CLOSED
+cohort_candidates: manifests/cohort_candidates_669.csv
+cohort_size: 32
+seed: 2026
+models: [Persistence, Standard, Quality-aware]
+units_verified: false
+time_semantics: provisional_interval_end

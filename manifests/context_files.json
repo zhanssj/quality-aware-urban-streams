@@ -1,0 +1,18 @@
+{
+  "prepared_at": "2026-11-02",
+  "raw_hdf5_included": false,
+  "files": [
+    {
+      "path": "context/previous_audit_review_ru.md",
+      "sha256": "fd5ff6285da7dad665a3aeb14fa73858cf86d11567b0a3ae539e53f5c871bde2",
+      "bytes": 17645,
+      "origin": "previous conversation attachment; copied without modification"
+    },
+    {
+      "path": "manifests/cohort_candidates_669.csv",
+      "sha256": "3091289f363b0768a6f42bc0772b54ba60c4ef397f172c55cdb78e0ff2d6e325",
+      "bytes": 50063,
+      "origin": "previous conversation attachment; copied without modification"
+    }
+  ]
+}

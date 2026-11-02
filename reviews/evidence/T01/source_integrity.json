@@ -1,0 +1,38 @@
+{
+  "commit": "103a6ef6c51702440649855db96ccc87aa620b59",
+  "files": [
+    {
+      "path": "src/aqstream/data/reader.py",
+      "git_blob_sha": "896df680cea9f5c3fc151b85a1390f48849ff292",
+      "matches_connector_blob": true
+    },
+    {
+      "path": "src/aqstream/__init__.py",
+      "git_blob_sha": "5262451c2c5d93f3d9399a83165c26079e3ab19d",
+      "matches_connector_blob": true
+    },
+    {
+      "path": "src/aqstream/data/__init__.py",
+      "git_blob_sha": "51bd3024738a47a39ebd5abff00c638ceb1791b3",
+      "matches_connector_blob": true
+    },
+    {
+      "path": "tests/conftest.py",
+      "git_blob_sha": "2946946a438742fdddf3a77379c40096f761d8dd",
+      "matches_connector_blob": true
+    },
+    {
+      "path": "tests/test_reader.py",
+      "git_blob_sha": "dd3c15693641ccbfe2393457ac624227d2f99667",
+      "matches_connector_blob": true
+    }
+  ],
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "dependencies": {
+    "numpy": "2.3.5",
+    "h5py": "3.15.1",
+    "pytest": "9.0.2",
+    "PyYAML": "6.0.3"
+  },
+  "scope": "Partial source snapshot retrieved through GitHub connector; byte-identical blobs, not git clone. Environment differs from project lock."
+}

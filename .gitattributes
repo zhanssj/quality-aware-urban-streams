@@ -1,0 +1,14 @@
+* text=auto eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.txt text eol=lf
+*.csv text eol=lf
+# Preserve the exact imported bytes referenced by manifests/context_files.json.
+context/previous_audit_review_ru.md -text whitespace=cr-at-eol
+manifests/cohort_candidates_669.csv -text whitespace=cr-at-eol
+# Legacy reports contain hashes of their inputs: keep those inputs byte-for-byte.
+airqualitybench_tools/** -text whitespace=cr-at-eol

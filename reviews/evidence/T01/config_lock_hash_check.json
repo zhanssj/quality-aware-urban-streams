@@ -1,0 +1,5 @@
+{
+  "configs/smoke.yaml": "20da64425c97ab400bdb67d485db59dbd11c5f20a251e40d490e7e97af1d5ad4",
+  "requirements.lock.txt": "e3b8390d373635b0376213bb5b9868df9feb468285dd421b142936570ac630b4",
+  "matches_smoke_evidence": true
+}

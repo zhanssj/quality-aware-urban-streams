@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=84,<85"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quality-aware-urban-streams"
+version = "0.1.0"
+description = "Reproducible quality-aware urban sensor stream experiments"
+requires-python = ">=3.14"
+dependencies = ["numpy>=2.5,<3", "h5py>=3.16,<4", "PyYAML>=6,<7"]
+
+[project.optional-dependencies]
+dev = ["pytest>=9,<10", "ruff>=0.17,<0.18"]
+
+[project.scripts]
+aqstream = "aqstream.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+include = ["src/**/*.py", "tests/**/*.py"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
