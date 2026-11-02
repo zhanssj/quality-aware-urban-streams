@@ -1,0 +1,16 @@
+{
+  "expected_scheduled": 3,
+  "real_pilot_data_used": false,
+  "full": {
+    "scheduled": 3,
+    "predicted": 3,
+    "prediction_coverage": 1.0,
+    "mae": 2.0
+  },
+  "truncated": {
+    "scheduled": 2,
+    "predicted": 2,
+    "prediction_coverage": 1.0,
+    "mae": 1.5
+  }
+}

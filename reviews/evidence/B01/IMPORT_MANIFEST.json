@@ -1,0 +1,61 @@
+{
+  "source": "user-provided B01_review_bundle",
+  "scope": "external review archive; scripts are not automatically executed",
+  "files": [
+    {
+      "source_path": "reproduce_coverage_gap.py",
+      "repository_path": "reviews/evidence/B01/reproduce_coverage_gap.py",
+      "sha256": "4b0c71172358f8e598397ec0cf85c7c6065217d61fcd20091e84c96725530688"
+    },
+    {
+      "source_path": "B01.md",
+      "repository_path": "reviews/B01.md",
+      "sha256": "966551174b5c3b4a18d4e8eaea4dba96adb0555b9a9c976c42bfe2dbe2e3daf9"
+    },
+    {
+      "source_path": "test_b01_review_checks.py",
+      "repository_path": "reviews/evidence/B01/test_b01_review_checks.py",
+      "sha256": "94f8b05e5d64207d4a01d23f5addc4d45b51ec3ecf4ec7cb272a8dd5b02f91bc"
+    },
+    {
+      "source_path": "CODEX_HANDOFF.txt",
+      "repository_path": "reviews/evidence/B01/CODEX_HANDOFF.txt",
+      "sha256": "f8cb100d8b99e2d1de237ca8992782b56dd8be462de681d9cfa4615120e7a860"
+    },
+    {
+      "source_path": "README.md",
+      "repository_path": "reviews/evidence/B01/README.md",
+      "sha256": "c3caf9813a0b0f4aa5d78a410bd8d8f4c3563214c3759fb80617efceafd031c4"
+    },
+    {
+      "source_path": "evidence/local_extra_checks.txt",
+      "repository_path": "reviews/evidence/B01/evidence/local_extra_checks.txt",
+      "sha256": "e26ca1fb2b4a780e85516313de06363bebc11adfc1db2e398257e565a2a91fc9"
+    },
+    {
+      "source_path": "evidence/core_blob_verification.json",
+      "repository_path": "reviews/evidence/B01/evidence/core_blob_verification.json",
+      "sha256": "98fa94d47a30ec2ede1214ea7e04397d2c200c7a72cb08c231aad500fde3eba9"
+    },
+    {
+      "source_path": "evidence/derived_metric_comparisons.json",
+      "repository_path": "reviews/evidence/B01/evidence/derived_metric_comparisons.json",
+      "sha256": "d96aed4aa7c543936bc851652c84f0658d929135859ee310c2aa98dd0ae2fddd"
+    },
+    {
+      "source_path": "evidence/local_original_features.txt",
+      "repository_path": "reviews/evidence/B01/evidence/local_original_features.txt",
+      "sha256": "22bd0602e485e21676279c5aedc8d008bea4469ff3deb2b3a7f910f429e6b2dd"
+    },
+    {
+      "source_path": "evidence/verification_summary.json",
+      "repository_path": "reviews/evidence/B01/evidence/verification_summary.json",
+      "sha256": "8928c04b965c9edb604fc8af5912e772a58cf53a666a58eb6844ca31bacda711"
+    },
+    {
+      "source_path": "evidence/coverage_gap.json",
+      "repository_path": "reviews/evidence/B01/evidence/coverage_gap.json",
+      "sha256": "855550f9a1f009529b574767cbf283d6516f4bdcf67b5c8f11e4f4a0c596b1a2"
+    }
+  ]
+}

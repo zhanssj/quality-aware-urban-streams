@@ -12,3 +12,6 @@ context/previous_audit_review_ru.md -text whitespace=cr-at-eol
 manifests/cohort_candidates_669.csv -text whitespace=cr-at-eol
 # Legacy reports contain hashes of their inputs: keep those inputs byte-for-byte.
 airqualitybench_tools/** -text whitespace=cr-at-eol
+# Preserve the supplied external review archive and its SHA256 provenance.
+reviews/B01.md -text whitespace=cr-at-eol
+reviews/evidence/B01/** -text whitespace=cr-at-eol
