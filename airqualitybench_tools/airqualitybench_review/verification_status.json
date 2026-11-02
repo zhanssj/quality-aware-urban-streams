@@ -1,0 +1,8 @@
+{
+  "analysis_input": "audit_results.zip",
+  "raw_real_hdf5_available_in_this_session": false,
+  "reports_reaggregated_and_crosschecked": true,
+  "original_audit_synthetic_tests_passed": 4,
+  "deep_audit_synthetic_tests_passed": 4,
+  "deep_audit_run_on_real_hdf5_in_this_session": false
+}

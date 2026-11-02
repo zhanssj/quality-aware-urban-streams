@@ -1,0 +1,72 @@
+{
+  "repo_id": "xuxing123/AirQualityBench",
+  "repo_type": "dataset",
+  "revision": "bbdcdd257bc7aed69598d423ca034d03f7ce015e",
+  "updated_utc": "2026-11-02T06:30:25.780333+00:00",
+  "files": [
+    {
+      "name": "README.md",
+      "size_bytes": 3251,
+      "sha256": "fcb70e78e8292c684ab6ba176da7540947b0d71029ed87f5b925014d3bab850c",
+      "published_sha256_match": null,
+      "source_url": "https://huggingface.co/datasets/xuxing123/AirQualityBench/resolve/bbdcdd257bc7aed69598d423ca034d03f7ce015e/README.md"
+    },
+    {
+      "name": "selected_nodes_metadata.csv",
+      "size_bytes": 101712,
+      "sha256": "0af8d0b3a1114638c59ca8c836decb15582c9a9938515c9d92e7c4158dd1cc83",
+      "published_sha256_match": null,
+      "source_url": "https://huggingface.co/datasets/xuxing123/AirQualityBench/resolve/bbdcdd257bc7aed69598d423ca034d03f7ce015e/selected_nodes_metadata.csv"
+    },
+    {
+      "name": "global_quality_stats.csv",
+      "size_bytes": 1517557,
+      "sha256": "8592a7a910bbd3d1f0ca9dac89e73e0d3850de2ec5beda27d89663390975ad46",
+      "published_sha256_match": null,
+      "source_url": "https://huggingface.co/datasets/xuxing123/AirQualityBench/resolve/bbdcdd257bc7aed69598d423ca034d03f7ce015e/global_quality_stats.csv"
+    },
+    {
+      "name": "scaler.csv",
+      "size_bytes": 161,
+      "sha256": "d6dedb600f00b192b5c277c77dd1491ea1c8cae4d027d2d9c7d00a006aacf5ea",
+      "published_sha256_match": null,
+      "source_url": "https://huggingface.co/datasets/xuxing123/AirQualityBench/resolve/bbdcdd257bc7aed69598d423ca034d03f7ce015e/scaler.csv"
+    },
+    {
+      "name": "aq_compact_2021.h5",
+      "size_bytes": 186061095,
+      "sha256": "111bcf2a7e84d0e8a6421cfeebc6af321d1778acd793d4b60332345cb3b56f47",
+      "published_sha256_match": null,
+      "source_url": "https://huggingface.co/datasets/xuxing123/AirQualityBench/resolve/bbdcdd257bc7aed69598d423ca034d03f7ce015e/aq_compact_2021.h5"
+    },
+    {
+      "name": "aq_compact_2022.h5",
+      "size_bytes": 179894888,
+      "sha256": "ea6100a26e253857d63518cefcb62f736401de35f8a1173123aed16c33d6a40a",
+      "published_sha256_match": null,
+      "source_url": "https://huggingface.co/datasets/xuxing123/AirQualityBench/resolve/bbdcdd257bc7aed69598d423ca034d03f7ce015e/aq_compact_2022.h5"
+    },
+    {
+      "name": "aq_compact_2023.h5",
+      "size_bytes": 277680451,
+      "sha256": "952556ead9a3f62bfa9d08145f93fa050a8486b3e7fe4da8623029c4d2fde315",
+      "published_sha256_match": null,
+      "source_url": "https://huggingface.co/datasets/xuxing123/AirQualityBench/resolve/bbdcdd257bc7aed69598d423ca034d03f7ce015e/aq_compact_2023.h5"
+    },
+    {
+      "name": "aq_compact_2024.h5",
+      "size_bytes": 317830115,
+      "sha256": "b2a25223614b092ead3ece55093c43a094554c90361baea35a8933625ad185d4",
+      "published_sha256_match": null,
+      "source_url": "https://huggingface.co/datasets/xuxing123/AirQualityBench/resolve/bbdcdd257bc7aed69598d423ca034d03f7ce015e/aq_compact_2024.h5"
+    },
+    {
+      "name": "aq_compact_2025.h5",
+      "size_bytes": 324894267,
+      "sha256": "bbdc1c689f8abbfd12869a4d0addab4ac310c284664f537d88200778a567d6d5",
+      "published_sha256_match": true,
+      "source_url": "https://huggingface.co/datasets/xuxing123/AirQualityBench/resolve/bbdcdd257bc7aed69598d423ca034d03f7ce015e/aq_compact_2025.h5"
+    }
+  ],
+  "note": "SHA256 values are local fingerprints. A remote match is claimed only when explicitly recorded."
+}
