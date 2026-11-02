@@ -2,7 +2,9 @@ import numpy as np
 import pytest
 
 from aqstream.data import DataContractError
+from aqstream.features import FallbackState, YearGrid
 from aqstream.replay.calendars import ScenarioSpec, make_calendar, training_mixture
+from aqstream.replay.mixture import weighted_training_samples
 
 
 def test_calendar_reproducibility_and_explicit_denominators(tmp_path):
@@ -77,3 +79,44 @@ def test_weighted_training_views_explicit_and_independent_seed():
     assert validation.fingerprint != views[1][0].fingerprint
     with pytest.raises(DataContractError, match="sum to one"):
         training_mixture(valid, ("a", "b"), specs=specs, weights=(1.0, 1.0), train_seed=2101)
+
+
+def test_weighted_training_generator_preserves_truth_and_total_weight_per_sample():
+    values = np.arange(12, dtype=float).reshape(-1, 1)
+    valid = np.ones_like(values, dtype=bool)
+    valid[3] = False
+    state = FallbackState(("s0",), (4.0,), (1,), 4.0, (2023,))
+    rows = list(
+        weighted_training_samples(
+            values,
+            valid,
+            state,
+            YearGrid((2023,), (12,)),
+            specs=(ScenarioSpec("clean"), ScenarioSpec("drop", random_drop_rate=1.0)),
+            weights=(0.25, 0.75),
+            train_seed=2101,
+        )
+    )
+    sums = {}
+    for row in rows:
+        key = row.features.sample_ids[0].key
+        sums[key] = sums.get(key, 0) + row.weight
+        target = row.features.sample_ids[0].target_index
+        assert row.truth.source_valid[0] == valid[target, 0]
+        if valid[target, 0]:
+            assert row.truth.values[0] == values[target, 0]
+        else:
+            assert np.isnan(row.truth.values[0])
+    assert len(rows) == 24 and len(sums) == 12 and set(sums.values()) == {1.0}
+    with pytest.raises(DataContractError, match="cannot read validation"):
+        list(
+            weighted_training_samples(
+                values,
+                valid,
+                state,
+                YearGrid((2024,), (12,)),
+                specs=(ScenarioSpec("clean"),),
+                weights=(1.0,),
+                train_seed=2101,
+            )
+        )

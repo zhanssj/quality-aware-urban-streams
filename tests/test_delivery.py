@@ -106,3 +106,19 @@ def test_prime_and_waits_have_same_target_and_remaining_lead():
     assert [(71 + 1) * 60 - (71 * 60 + wait) for wait in (0, 5, 15)] == [60, 55, 45]
     with pytest.raises(DataContractError, match="monotone"):
         history.forecast(70, cutoff_minutes=70 * 60.0)
+
+
+def test_priming_cannot_be_used_for_a_forecast_before_its_history_boundary():
+    history, _, _ = observer()
+    values = np.arange(70, dtype=float).reshape(-1, 1)
+    history.prime(values, np.ones_like(values, dtype=bool), first_target=71)
+    with pytest.raises(DataContractError, match="primed history boundary"):
+        history.forecast(20, cutoff_minutes=1200.0)
+
+
+def test_conflicting_duplicate_is_error_and_original_message_is_unchanged():
+    history, _, _ = observer()
+    history.receive(SensorEvent(0, "s0", 2.0, 60.0), cutoff_minutes=60.0)
+    with pytest.raises(DataContractError, match="Conflicting duplicate"):
+        history.receive(SensorEvent(0, "s0", 3.0, 60.0), cutoff_minutes=60.0)
+    assert history.forecast(1, cutoff_minutes=60.0).persistence[0] == 2

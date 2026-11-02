@@ -38,6 +38,7 @@ class DeliveryHistory:
         self._prefix_index = np.full(len(fitted.station_ids), -1, dtype=np.int64)
         self._prefix_cursor = 0
         self._last_target = -1
+        self._minimum_target = 0
         self._clock = -math.inf
         self.delivered_count = 0
 
@@ -54,6 +55,7 @@ class DeliveryHistory:
         if len(values) > first_target - 1 or not 0 <= first_target < sum(self.grid.lengths):
             raise DataContractError("Priming history must precede the first perturbed input")
         valid = (available == 1) & np.isfinite(values)
+        self._minimum_target = first_target
         self._delivered[: len(values)] = np.where(valid, values, np.nan)
         self.delivered_count = int(valid.sum())
         self._prefix_cursor = max(0, first_target - 24)
@@ -103,6 +105,8 @@ class DeliveryHistory:
             raise DataContractError(
                 "Forecast target/cutoff must be monotone; issued snapshots are immutable"
             )
+        if target_index < self._minimum_target:
+            raise DataContractError("Forecast precedes the primed history boundary")
         if not math.isfinite(cutoff_minutes) or cutoff_minutes < target_index * 60:
             raise DataContractError("Forecast cutoff precedes its origin")
         self._clock, self._last_target = cutoff_minutes, target_index

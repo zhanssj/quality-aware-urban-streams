@@ -74,6 +74,18 @@ class PredictionPlan:
                 self.wait_minutes,
             ):
                 raise DataContractError("Mixed or unexpected run/scenario/wait context")
+            clocks = {
+                "origin_minutes": target * 60,
+                "cutoff_minutes": target * 60 + wait,
+                "target_end_minutes": (target + 1) * 60,
+                "remaining_lead_minutes": 60 - wait,
+                "cutoff_index": target,
+            }
+            for name, expected in clocks.items():
+                if name in row and (
+                    not math.isfinite(float(row[name])) or float(row[name]) != expected
+                ):
+                    raise DataContractError(f"Prediction clock differs from plan: {name}")
         except (KeyError, TypeError, ValueError) as exc:
             if isinstance(exc, DataContractError):
                 raise

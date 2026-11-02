@@ -84,3 +84,13 @@ def test_finite_prediction_coverage_uses_planned_count(tmp_path):
     )
     assert result["models"]["standard"]["prediction_coverage"] == pytest.approx(2 / 3)
     assert all(value["scored"] == 2 for value in result["models"].values())
+
+
+@pytest.mark.parametrize(
+    "field", ["origin_minutes", "cutoff_minutes", "target_end_minutes", "remaining_lead_minutes"]
+)
+def test_inconsistent_clock_metadata_rejected(tmp_path, field):
+    with pytest.raises(DataContractError, match="clock differs"):
+        evaluate_predictions(
+            write_rows(tmp_path, lambda rows: rows[0].update({field: -99})), plan=plan()
+        )
