@@ -1,23 +1,24 @@
 # Статус
 
-Состояние проекта: B01 APPROVED внешним ревью, принят владельцем и слит в main.
+Состояние проекта: B02 IN_PROGRESS, явно назначен владельцем (N1 + T04 + T05).
 Новый полный аудит: не назначен и не нужен.
-Текущий блок: B01 завершён и принят. Следующий блок не назначен.
+Текущий блок: B02. Сначала полнота плана N1, затем потери/доставка/ожидание; frozen B01 baseline.
 Remote repository: https://github.com/zhanssj/quality-aware-urban-streams.git.
 Main подтянут до ea9205c47832a27f0331b6fe0f0eda405eeef6be; tree совпал с reviewed HEAD bab6d90.
-Ветка записи приёмки: codex/B01-review-acceptance (только документация и архив ревью).
+Рабочая ветка: codex/B02-losses-arrival. В неё перенесён commit приёмки B01 из отдельной docs-ветки.
 Test gate 2025: CLOSED.
 Physical units: UNVERIFIED.
 Time semantics of published HDF5: UNVERIFIED; development convention documented.
 
 | Задача | Статус | Code commit | Handoff | Review |
 |---|---|---|---|---|
+| B02 | IN_PROGRESS | - | handoffs/B02.md | в конце блока |
 | B01 | APPROVED (внешнее) | 0a70134e32d86c5216e6f42e9647adb780756c64 | handoffs/B01.md | reviews/B01.md; подтверждено владельцем |
 | T01 | APPROVED (внешнее) | 42e3a4457b6beed6adb6a273d0353fb5f05e9ab4 | handoffs/T01.md | reviews/T01-R1.md; подтверждено владельцем |
 | T02 | APPROVED внешне в B01 | 0a70134e32d86c5216e6f42e9647adb780756c64 | handoffs/B01.md | reviews/B01.md |
 | T03 | APPROVED внешне в B01 | 0a70134e32d86c5216e6f42e9647adb780756c64 | handoffs/B01.md | reviews/B01.md |
-| T04 | TODO | - | - | - |
-| T05 | TODO | - | - | - |
+| T04 | IN_PROGRESS в B02 | - | handoffs/B02.md | в конце блока |
+| T05 | TODO в B02 | - | handoffs/B02.md | в конце блока |
 | T06 | TODO | - | - | - |
 | T07 | TODO | - | - | - |
 | T08 | DEFERRED_OPTIONAL | - | - | - |
