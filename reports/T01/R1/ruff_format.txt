@@ -1,0 +1,7 @@
+code_commit: 42e3a4457b6beed6adb6a273d0353fb5f05e9ab4
+dirty_tree_at_start: false
+AQ_DATA_ROOT: unset
+command: ['C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe', '-m', 'ruff', 'format', '--check', 'src', 'tests']
+exit_code: 0
+
+11 files already formatted

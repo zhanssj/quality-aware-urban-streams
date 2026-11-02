@@ -1,0 +1,25 @@
+................sF                                                       [100%]
+================================== FAILURES ===================================
+______________ test_large_integer_must_not_silently_change_value ______________
+
+tmp_path = WindowsPath('C:/Users/zhanssj/AppData/Local/Temp/pytest-of-zhanssj/pytest-2/test_large_integer_must_not_si0')
+
+    def test_large_integer_must_not_silently_change_value(tmp_path):
+        value = 2**53 + 1
+        write_source(tmp_path, np.full((1, 1, 1), value, dtype=np.uint64))
+        try:
+            b = next(HDF5Reader(tmp_path).iter_blocks(year=2023, station_ids=["s0"]))
+        except DataContractError:
+            return  # Rejecting integers that cannot be represented exactly is acceptable.
+        assert b.source_valid[0, 0]
+>       assert int(b.values[0, 0]) == value, "Accepted source integer was silently rounded"
+E       AssertionError: Accepted source integer was silently rounded
+E       assert 9007199254740992 == 9007199254740993
+E        +  where 9007199254740992 = int(np.float64(9007199254740992.0))
+
+tests\test_reader_review_regressions.py:124: AssertionError
+=========================== short test summary info ===========================
+SKIPPED [1] tests\test_reader_review_regressions.py:102: Platform has no wider-than-float64 longdouble
+FAILED tests/test_reader_review_regressions.py::test_large_integer_must_not_silently_change_value
+1 failed, 16 passed, 1 skipped in 0.35s
+exit_code: 1

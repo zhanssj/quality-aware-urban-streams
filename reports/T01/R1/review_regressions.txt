@@ -1,0 +1,10 @@
+code_commit: 42e3a4457b6beed6adb6a273d0353fb5f05e9ab4
+dirty_tree_at_start: false
+AQ_DATA_ROOT: unset
+command: ['C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe', '-m', 'pytest', 'tests/test_reader_review_regressions.py', '-q']
+exit_code: 0
+
+................s.                                                       [100%]
+=========================== short test summary info ===========================
+SKIPPED [1] tests\test_reader_review_regressions.py:110: Platform has no wider-than-float64 longdouble
+17 passed, 1 skipped in 0.18s

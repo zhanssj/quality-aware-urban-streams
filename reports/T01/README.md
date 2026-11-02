@@ -1,6 +1,9 @@
 # Evidence T01
 
-Проверенный code commit: `252fbb2f670eb9131e264d51adcb08e634ccba24`.
+Evidence исправления R1: `R1/`, code commit `42e3a4457b6beed6adb6a273d0353fb5f05e9ab4`.
+Ниже — исходные исторические evidence до R1.
+
+Первоначальный проверенный code commit: `252fbb2f670eb9131e264d51adcb08e634ccba24`.
 Проверки выполнены на чистой рабочей копии. Полная передача: `handoffs/T01.md`.
 
 `checks.json` содержит реальные argv и exit codes; TXT — вывод соответствующих команд.
