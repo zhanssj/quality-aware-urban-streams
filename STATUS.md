@@ -1,18 +1,18 @@
 # Статус
 
-Состояние проекта: T01 READY_FOR_REVIEW — исправлен только R1, ожидается повторное ревью.
+Состояние проекта: B01 IN_PROGRESS (T02 + T03, явно назначены владельцем).
 Новый полный аудит: не назначен и не нужен.
-Текущая задача: T01. Приоритет: первый работающий исследовательский срез.
+Текущий блок: B01. Сначала обязательные тесты T02, затем baseline T03 без промежуточного внешнего ревью.
 Remote repository: https://github.com/zhanssj/quality-aware-urban-streams.git.
-Рабочая ветка: codex/T01-foundation-loader. Main не изменяется.
+Рабочая ветка: codex/B01-features-baselines от main 444f816. Main подтянут по указанию владельца.
 Test gate 2025: CLOSED.
 Physical units: UNVERIFIED.
 Time semantics of published HDF5: UNVERIFIED; development convention documented.
 
 | Задача | Статус | Code commit | Handoff | Review |
 |---|---|---|---|---|
-| T01 | READY_FOR_REVIEW | 42e3a4457b6beed6adb6a273d0353fb5f05e9ab4 | handoffs/T01.md | R1 исправлен; повторное ревью PENDING |
-| T02 | TODO | - | - | - |
+| T01 | APPROVED (внешнее) | 42e3a4457b6beed6adb6a273d0353fb5f05e9ab4 | handoffs/T01.md | reviews/T01-R1.md; подтверждено владельцем |
+| T02 | IN_PROGRESS в B01 | - | handoffs/B01.md | в конце блока |
 | T03 | TODO | - | - | - |
 | T04 | TODO | - | - | - |
 | T05 | TODO | - | - | - |
@@ -23,6 +23,8 @@ Time semantics of published HDF5: UNVERIFIED; development convention documented.
 Допустимые переходы: TODO -> IN_PROGRESS -> READY_FOR_REVIEW -> APPROVED или CHANGES_REQUESTED.
 BLOCKED допустим с конкретной причиной и выполненной независимой частью задачи.
 Codex не ставит APPROVED сам. Следующая задача запускается по отдельному указанию владельца.
+Владелец явно назначил B01 = T02 + T03; между ними достаточно внутренних тестов T02.
+После общего handoff остановиться; T04 и test-2025 не назначены.
 
 ## Исправление R1, 2026-11-02
 
