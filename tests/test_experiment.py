@@ -14,6 +14,7 @@ from aqstream.data import DataContractError, HDF5Reader
 from aqstream.evaluation import evaluate_predictions
 from aqstream.experiment import choose_cohort, run_experiment
 from aqstream.models import Baselines
+from aqstream.prediction_plan import PredictionPlan
 
 
 @pytest.fixture
@@ -80,7 +81,12 @@ def test_synthetic_end_to_end_reproducible_and_evaluable(experiment_inputs, monk
     second = run_experiment(experiment_inputs)
     first_metrics = json.loads((first / "metrics.json").read_text(encoding="utf-8"))
     assert first_metrics == evaluate_predictions(first / "predictions_validation.csv")
-    assert first_metrics == json.loads((second / "metrics.json").read_text(encoding="utf-8"))
+    second_metrics = json.loads((second / "metrics.json").read_text(encoding="utf-8"))
+    # Runtime identity differs; every numerical metric/count remains exactly reproducible.
+    assert {
+        k: v for k, v in first_metrics.items() if k not in ("context", "expected_plan_sha256")
+    } == {k: v for k, v in second_metrics.items() if k not in ("context", "expected_plan_sha256")}
+    assert first_metrics["context"]["run_id"] != second_metrics["context"]["run_id"]
     with (first / "predictions_validation.csv").open(newline="", encoding="utf-8") as handle:
         rows = list(csv.DictReader(handle))
     assert len(rows) == 30
@@ -165,6 +171,10 @@ def predictions_fixture(tmp_path):
                 "persistence",
                 "standard",
                 "quality_aware",
+                "target_local_index",
+                "run_id",
+                "scenario_id",
+                "wait_minutes",
             ],
         )
         writer.writeheader()
@@ -186,8 +196,15 @@ def predictions_fixture(tmp_path):
                     "persistence": persistence,
                     "standard": standard,
                     "quality_aware": quality,
+                    "target_local_index": index,
+                    "run_id": "fixture",
+                    "scenario_id": "natural_missingness",
+                    "wait_minutes": 0,
                 }
             )
+    PredictionPlan(("s0",), 0, 3, 0, "fixture", "natural_missingness", 0).save(
+        tmp_path / "evaluation_plan.json"
+    )
     return path
 
 

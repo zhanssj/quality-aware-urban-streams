@@ -24,6 +24,7 @@ from aqstream.data import DataContractError, HDF5Reader
 from aqstream.evaluation import MODEL_NAMES, evaluate_predictions
 from aqstream.features import COMMON_NAMES, QUALITY_NAMES, YearGrid, fit_fallback, scheduled_samples
 from aqstream.models import Baselines
+from aqstream.prediction_plan import PredictionPlan
 
 
 class MemoryMonitor:
@@ -102,6 +103,15 @@ def run_experiment(config_path: Path) -> Path:
         "rss_guard": "50ms sampled RSS, checked at phase/batch boundaries; not an OS hard limit",
     }
     write_json(output / "plan.json", plan)  # Saved before reading labels or comparing models.
+    PredictionPlan(
+        ids,
+        train_steps,
+        sum(grid.lengths),
+        0,
+        run_id,
+        "natural_missingness",
+        0,
+    ).save(output / "evaluation_plan.json")
     wall_started = perf_counter()
     dirty = _git("status", "--porcelain")
     manifest = {

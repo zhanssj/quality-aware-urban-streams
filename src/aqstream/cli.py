@@ -168,6 +168,7 @@ def main(argv: list[str] | None = None) -> int:
     evaluate = subparsers.add_parser("evaluate", help="recompute shared-target validation metrics")
     evaluate.add_argument("--predictions", required=True, type=Path)
     evaluate.add_argument("--out", required=True, type=Path)
+    evaluate.add_argument("--plan", type=Path, help="expected plan; default alongside predictions")
     evaluate.add_argument("--split", choices=["validation"], default="validation")
     export = subparsers.add_parser(
         "export-review", help="export whitelisted B01 source/docs/evidence"
@@ -186,8 +187,10 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "evaluate":
             from aqstream.artifacts import write_json
             from aqstream.evaluation import evaluate_predictions
+            from aqstream.prediction_plan import PredictionPlan
 
-            metrics = evaluate_predictions(args.predictions)
+            plan = PredictionPlan.load(args.plan) if args.plan else None
+            metrics = evaluate_predictions(args.predictions, plan=plan)
             args.out.parent.mkdir(parents=True, exist_ok=True)
             write_json(args.out, metrics)
             print(f"PASS diagnostic validation metrics: {args.out}")
