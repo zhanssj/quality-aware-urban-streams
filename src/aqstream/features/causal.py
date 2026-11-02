@@ -152,6 +152,45 @@ class TruthFrame:
     source_valid: np.ndarray
 
 
+def frame_from_history(
+    fitted: FallbackState,
+    grid: YearGrid,
+    target: int,
+    filled: np.ndarray,
+    available: np.ndarray,
+    last_values: np.ndarray,
+    last_index: np.ndarray,
+    current_gap: np.ndarray,
+    *,
+    started: float,
+) -> FeatureFrame:
+    """One common feature kernel for ordinary and delivery-aware observer snapshots."""
+    year, local = grid.point(target)
+    common = [filled[-np.array(LAGS)].T]
+    missing = []
+    for window in (6, 24):
+        common.extend((filled[-window:].mean(axis=0), filled[-window:].std(axis=0)))
+        missing.append(1 - available[-window:].mean(axis=0))
+    has_history = last_index >= 0
+    age = np.where(has_history, target - 1 - last_index, -1)
+    quality = np.column_stack(
+        (available[-np.array(LAGS)].T, age, *missing, current_gap, has_history)
+    ).astype(np.float64)
+    values = np.column_stack(common)
+    if not np.isfinite(values).all():
+        raise DataContractError("Feature arithmetic produced nonfinite common values")
+    ids = tuple(
+        SampleID(station, target - 1, target, year, local) for station in fitted.station_ids
+    )
+    return FeatureFrame(
+        ids,
+        readonly(values),
+        readonly(quality),
+        readonly(last_values.copy()),
+        perf_counter() - started,
+    )
+
+
 class CausalFeatures:
     """Observer state. forecast accepts identity only, never truth or future events.
 
@@ -174,38 +213,17 @@ class CausalFeatures:
     def forecast(self) -> FeatureFrame:
         started = perf_counter()
         target = self.next_index
-        year, local = self.grid.point(target)
-        lag_slots = (target - np.array(LAGS)) % 24
-        common = [self._filled[lag_slots].T]
-        missing = []
-        for window in (6, 24):
-            slots = np.arange(target - window, target) % 24
-            common.extend((self._filled[slots].mean(axis=0), self._filled[slots].std(axis=0)))
-            missing.append(1 - self._available[slots].mean(axis=0))
-        has_history = self._last_index >= 0
-        age = np.where(has_history, target - 1 - self._last_index, -1)
-        quality = np.column_stack(
-            (
-                self._available[lag_slots].T,
-                age,
-                *missing,
-                self._gap,
-                has_history,
-            )
-        ).astype(np.float64)
-        values = np.column_stack(common)
-        if not np.isfinite(values).all():
-            raise DataContractError("Feature arithmetic produced nonfinite common values")
-        ids = tuple(
-            SampleID(station, target - 1, target, year, local)
-            for station in self.fitted.station_ids
-        )
-        return FeatureFrame(
-            ids,
-            readonly(values),
-            readonly(quality),
-            readonly(self._last.copy()),
-            perf_counter() - started,
+        slots = np.arange(target - 24, target) % 24
+        return frame_from_history(
+            self.fitted,
+            self.grid,
+            target,
+            self._filled[slots],
+            self._available[slots],
+            self._last,
+            self._last_index,
+            self._gap,
+            started=started,
         )
 
     def observe(self, index: int, values: np.ndarray, available: np.ndarray) -> None:
