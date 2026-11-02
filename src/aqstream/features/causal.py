@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Iterator, Sequence
 from dataclasses import dataclass
+from time import perf_counter
 
 import numpy as np
 
@@ -133,6 +134,7 @@ class FeatureFrame:
     common: np.ndarray
     quality: np.ndarray
     persistence: np.ndarray
+    compute_seconds: float = 0.0
 
     @property
     def standard(self) -> np.ndarray:
@@ -170,6 +172,7 @@ class CausalFeatures:
         self._available = np.zeros_like(self._filled, dtype=bool)
 
     def forecast(self) -> FeatureFrame:
+        started = perf_counter()
         target = self.next_index
         year, local = self.grid.point(target)
         lag_slots = (target - np.array(LAGS)) % 24
@@ -197,7 +200,13 @@ class CausalFeatures:
             SampleID(station, target - 1, target, year, local)
             for station in self.fitted.station_ids
         )
-        return FeatureFrame(ids, readonly(values), readonly(quality), readonly(self._last.copy()))
+        return FeatureFrame(
+            ids,
+            readonly(values),
+            readonly(quality),
+            readonly(self._last.copy()),
+            perf_counter() - started,
+        )
 
     def observe(self, index: int, values: np.ndarray, available: np.ndarray) -> None:
         if index != self.next_index:

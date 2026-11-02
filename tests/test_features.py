@@ -159,3 +159,50 @@ def test_grid_rejects_test_before_any_open(tmp_path, monkeypatch):
     monkeypatch.setattr(reader, "inspect", lambda year: pytest.fail("must not inspect test"))
     with pytest.raises(DataContractError, match="2025 is CLOSED"):
         YearGrid.from_reader(reader, (2023, 2024, 2025))
+
+
+def test_multiple_ring_wraps_and_asynchronous_stations_match_independent_reference():
+    rng = np.random.default_rng(57)
+    source = rng.normal(size=(151, 2))
+    source[3, 0] = 0
+    available = rng.random(source.shape) > 0.4
+    available[3, 0] = True
+    state = fitted(("s0", "s1"), (4.0, 8.0))
+    builder = CausalFeatures(state, YearGrid((2023,), (152,)))
+    filled = [np.array(state.medians) for _ in range(24)]
+    masks = [np.zeros(2, dtype=bool) for _ in range(24)]
+    last_value = np.array(state.medians)
+    last_index = np.full(2, -1)
+    gap = np.zeros(2)
+    for target in range(151):
+        frame = builder.forecast()
+        lags = np.stack([filled[-lag] for lag in (1, 2, 3, 6, 12, 24)], axis=1)
+        observed = np.stack([masks[-lag] for lag in (1, 2, 3, 6, 12, 24)], axis=1)
+        expected_common = np.column_stack(
+            (
+                lags,
+                np.mean(filled[-6:], axis=0),
+                np.std(filled[-6:], axis=0),
+                np.mean(filled[-24:], axis=0),
+                np.std(filled[-24:], axis=0),
+            )
+        )
+        expected_quality = np.column_stack(
+            (
+                observed,
+                np.where(last_index >= 0, target - 1 - last_index, -1),
+                1 - np.mean(masks[-6:], axis=0),
+                1 - np.mean(masks[-24:], axis=0),
+                gap,
+                last_index >= 0,
+            )
+        )
+        np.testing.assert_allclose(frame.common, expected_common, rtol=0, atol=1e-14)
+        np.testing.assert_array_equal(frame.quality, expected_quality)
+        np.testing.assert_array_equal(frame.persistence, last_value)
+        last_value = np.where(available[target], source[target], last_value)
+        last_index = np.where(available[target], target, last_index)
+        gap = np.where(available[target], 0, gap + 1)
+        filled.append(last_value.copy())
+        masks.append(available[target].copy())
+        builder.observe(target, source[target], available[target])
