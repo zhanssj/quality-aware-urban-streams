@@ -1,0 +1,152 @@
+{
+  "task_id": "B01",
+  "code_commit": "0a70134e32d86c5216e6f42e9647adb780756c64",
+  "base_commit": "444f8164772dba54c354c20e0f6e00d1b9a3cf68",
+  "dirty_tree_at_start": false,
+  "started_at_utc": "2026-11-02T14:50:53.704678+05:00",
+  "checks": [
+    {
+      "check": "T02_gate",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "tests/test_features.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "T02_gate.txt"
+    },
+    {
+      "check": "synthetic_e2e",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "tests/test_experiment.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "synthetic_e2e.txt"
+    },
+    {
+      "check": "pytest",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "pytest.txt"
+    },
+    {
+      "check": "ruff_check",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "src",
+        "tests"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "ruff_check.txt"
+    },
+    {
+      "check": "ruff_format",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "src",
+        "tests"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "ruff_format.txt"
+    },
+    {
+      "check": "pip_check",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "pip_check.txt"
+    },
+    {
+      "check": "cli_help",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "aqstream",
+        "--help"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "cli_help.txt"
+    },
+    {
+      "check": "real_pilot",
+      "command": [
+        "python",
+        "-m",
+        "aqstream",
+        "train",
+        "--config",
+        "configs/baseline.yaml"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "real_pilot.txt",
+      "run_id": "B01-20261102T095148Z-df565b77"
+    },
+    {
+      "check": "evaluate_same_prediction_csv",
+      "command": [
+        "python",
+        "-m",
+        "aqstream",
+        "evaluate",
+        "--predictions",
+        "artifacts/B01-20261102T095148Z-df565b77/predictions_validation.csv",
+        "--out",
+        "artifacts/B01-20261102T095148Z-df565b77/recomputed_metrics.json"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "exact_json_equality": true
+    },
+    {
+      "check": "export_review_and_integrity",
+      "command": [
+        "python",
+        "-m",
+        "aqstream",
+        "export-review",
+        "--out",
+        "exports/B01-review.zip"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "payload_hashes_verified": true,
+      "real_artifact_hashes_verified": true
+    }
+  ],
+  "finished_synthetic_at_utc": "2026-11-02T14:51:11.327295+05:00",
+  "config_sha256": "1550726655c5943f760d145a56254e49be3c654e0416431aa514adb261186f25",
+  "dependency_lock_sha256": "1307da7d9dab549b3ddd9d5f4583b4e9508920e4c82d252fa64b8a973e38f459",
+  "evaluated_run_id": "B01-20261102T095148Z-df565b77",
+  "full_synthetic_result": "105 passed, 1 skipped (Windows longdouble)",
+  "local_artifact_root": "artifacts/B01-20261102T095148Z-df565b77"
+}

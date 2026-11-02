@@ -1,0 +1,18 @@
+code_commit: 0a70134e32d86c5216e6f42e9647adb780756c64
+dirty_tree: false
+command: ['C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe', '-m', 'aqstream', '--help']
+exit_code: 0
+
+usage: python.exe -m aqstream [-h] {prepare,train,evaluate,export-review} ...
+
+Quality-aware sensor stream research core (B01)
+
+positional arguments:
+  {prepare,train,evaluate,export-review}
+    prepare             read at most 168 train rows and 2–4 stations
+    train               fixed bounded B01 train/validation experiment
+    evaluate            recompute shared-target validation metrics
+    export-review       export whitelisted B01 source/docs/evidence
+
+options:
+  -h, --help            show this help message and exit

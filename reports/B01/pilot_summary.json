@@ -1,0 +1,239 @@
+{
+  "run_id": "B01-20261102T095148Z-df565b77",
+  "task_id": "B01",
+  "status": "PASS",
+  "code_commit": "0a70134e32d86c5216e6f42e9647adb780756c64",
+  "dirty_tree": false,
+  "started_at": "2026-11-02T09:51:48.313498+00:00",
+  "config_sha256": "1550726655c5943f760d145a56254e49be3c654e0416431aa514adb261186f25",
+  "plan_sha256": "651c66a741b867d06c60bf0d27df31fb27bb3e600ef2d63de6d02fe263df478d",
+  "cohort_sha256": "1ffcc3a8e06bada03feca7e5aaee4ef893454fa285002bfb943fa6441adc8f5d",
+  "test_gate": "CLOSED",
+  "units_verified": false,
+  "time_semantics": "provisional_interval_end; row indices",
+  "command_argv": [
+    "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\src\\aqstream\\__main__.py",
+    "train",
+    "--config",
+    "configs/baseline.yaml"
+  ],
+  "exit_code": 0,
+  "finished_at": "2026-11-02T09:52:10.038380+00:00",
+  "split_definition": {
+    "train": [
+      2021,
+      2022,
+      2023
+    ],
+    "validation": [
+      2024
+    ],
+    "test": [
+      2025
+    ]
+  },
+  "inputs": [
+    {
+      "file": "aq_compact_2021.h5",
+      "size_bytes_observed": 186061095,
+      "mtime_ns_observed": 1793600866315300200,
+      "recorded_sha256": "111bcf2a7e84d0e8a6421cfeebc6af321d1778acd793d4b60332345cb3b56f47",
+      "sha256_verified_in_this_run": false,
+      "dataset_revision": "bbdcdd257bc7aed69598d423ca034d03f7ce015e",
+      "provenance": "existing download_manifest.json; not reverified",
+      "provenance_manifest_sha256": "efb978d1bdbe8f6c72aead46bab21784bf1690fe7d7ade54045a5604c200bbb5",
+      "recorded_size_matches": true
+    },
+    {
+      "file": "aq_compact_2022.h5",
+      "size_bytes_observed": 179894888,
+      "mtime_ns_observed": 1793600892208272600,
+      "recorded_sha256": "ea6100a26e253857d63518cefcb62f736401de35f8a1173123aed16c33d6a40a",
+      "sha256_verified_in_this_run": false,
+      "dataset_revision": "bbdcdd257bc7aed69598d423ca034d03f7ce015e",
+      "provenance": "existing download_manifest.json; not reverified",
+      "provenance_manifest_sha256": "efb978d1bdbe8f6c72aead46bab21784bf1690fe7d7ade54045a5604c200bbb5",
+      "recorded_size_matches": true
+    },
+    {
+      "file": "aq_compact_2023.h5",
+      "size_bytes_observed": 277680451,
+      "mtime_ns_observed": 1793600932356847200,
+      "recorded_sha256": "952556ead9a3f62bfa9d08145f93fa050a8486b3e7fe4da8623029c4d2fde315",
+      "sha256_verified_in_this_run": false,
+      "dataset_revision": "bbdcdd257bc7aed69598d423ca034d03f7ce015e",
+      "provenance": "existing download_manifest.json; not reverified",
+      "provenance_manifest_sha256": "efb978d1bdbe8f6c72aead46bab21784bf1690fe7d7ade54045a5604c200bbb5",
+      "recorded_size_matches": true
+    },
+    {
+      "file": "aq_compact_2024.h5",
+      "size_bytes_observed": 317830115,
+      "mtime_ns_observed": 1793600983340467600,
+      "recorded_sha256": "b2a25223614b092ead3ece55093c43a094554c90361baea35a8933625ad185d4",
+      "sha256_verified_in_this_run": false,
+      "dataset_revision": "bbdcdd257bc7aed69598d423ca034d03f7ce015e",
+      "provenance": "existing download_manifest.json; not reverified",
+      "provenance_manifest_sha256": "efb978d1bdbe8f6c72aead46bab21784bf1690fe7d7ade54045a5604c200bbb5",
+      "recorded_size_matches": true
+    }
+  ],
+  "feature_spec": {
+    "common": [
+      "lag_1",
+      "lag_2",
+      "lag_3",
+      "lag_6",
+      "lag_12",
+      "lag_24",
+      "mean_6",
+      "std_6",
+      "mean_24",
+      "std_24"
+    ],
+    "quality": [
+      "observed_1",
+      "observed_2",
+      "observed_3",
+      "observed_6",
+      "observed_12",
+      "observed_24",
+      "age",
+      "missing_ratio_6",
+      "missing_ratio_24",
+      "current_gap",
+      "has_history"
+    ],
+    "rolling": "causally filled, ddof=0; fallback padding; age=-1 without history"
+  },
+  "train_scheduled": 105120,
+  "train_scored_for_fit": 62338,
+  "model_params": {
+    "categorical_features": null,
+    "early_stopping": false,
+    "interaction_cst": null,
+    "l2_regularization": 1.0,
+    "learning_rate": 0.1,
+    "loss": "squared_error",
+    "max_bins": 255,
+    "max_depth": null,
+    "max_features": 1.0,
+    "max_iter": 60,
+    "max_leaf_nodes": 15,
+    "min_samples_leaf": 20,
+    "monotonic_cst": null,
+    "n_iter_no_change": 10,
+    "quantile": null,
+    "random_state": 2026,
+    "scoring": "loss",
+    "tol": 1e-07,
+    "validation_fraction": null,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "seed": 2026,
+  "dependency_lock_sha256": "1307da7d9dab549b3ddd9d5f4583b4e9508920e4c82d252fa64b8a973e38f459",
+  "python_version": "3.14.7",
+  "dependencies": {
+    "numpy": "2.5.4",
+    "h5py": "3.16.0",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "joblib": "1.6.0",
+    "threadpoolctl": "3.7.0",
+    "psutil": "7.2.2"
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "cpu": "Intel64 Family 6 Model 141 Stepping 1, GenuineIntel",
+    "logical_cpus": 12,
+    "ram_bytes": 34128322560
+  },
+  "threadpools": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Lib\\site-packages\\numpy.libs\\libscipy_openblas64_-ed4f167a5330424524f45258e7ca2c8d.dll",
+      "version": "0.3.34.106.0",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    },
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "num_threads": 2,
+      "prefix": "vcomp",
+      "filepath": "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Lib\\site-packages\\sklearn\\.libs\\vcomp140.dll",
+      "version": null
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 2,
+      "prefix": "libscipy_openblas",
+      "filepath": "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Lib\\site-packages\\scipy.libs\\libscipy_openblas-197ee2fc9b4d071f7e048078cac74115.dll",
+      "version": "0.3.31.dev",
+      "threading_layer": "pthreads",
+      "architecture": "SkylakeX"
+    }
+  ],
+  "peak_rss_sampled_bytes": 187420672,
+  "timings": {
+    "job_wall_seconds": 21.800869700033218,
+    "feature_compute_seconds": 4.614226501900703,
+    "fit_seconds": {
+      "standard": 0.3322012999560684,
+      "quality_aware": 0.4855775001924485
+    },
+    "inference_seconds": {
+      "persistence": 0.0005587995983660221,
+      "standard": 0.32484550029039383,
+      "quality_aware": 0.3089062992949039
+    },
+    "simulated_wait_minutes": 0
+  },
+  "artifacts": {
+    "cohort.json": {
+      "sha256": "1ffcc3a8e06bada03feca7e5aaee4ef893454fa285002bfb943fa6441adc8f5d",
+      "bytes": 609
+    },
+    "config.yaml": {
+      "sha256": "1550726655c5943f760d145a56254e49be3c654e0416431aa514adb261186f25",
+      "bytes": 432
+    },
+    "fallback.json": {
+      "sha256": "82c8240f0a07d8b9f2ffbc3e172a1bebad9ce1c8fb3392923d35a3c8e4bec627",
+      "bytes": 1463
+    },
+    "fit_plan.json": {
+      "sha256": "e567812c336d20b9c12a49630b3f1e393e35942749dee278641847c5e9753658",
+      "bytes": 912
+    },
+    "metrics.json": {
+      "sha256": "9a87bbc5e0d8040a7d433ec2fc9a3a7a49d21ce04685a91c3b7c915ab16a360f",
+      "bytes": 1688
+    },
+    "models.joblib": {
+      "sha256": "a61ed0e29662fcbf08d1a7d7459c7d2df0ddc3bcf6e5212b1ae26df839395c38",
+      "bytes": 256650
+    },
+    "plan.json": {
+      "sha256": "651c66a741b867d06c60bf0d27df31fb27bb3e600ef2d63de6d02fe263df478d",
+      "bytes": 1009
+    },
+    "predictions_validation.csv": {
+      "sha256": "8f02d54771b409317f6bfd312e8b42c35ac30443ddf50c997d237422809a03ea",
+      "bytes": 51355796
+    },
+    "training_sample_ids.csv": {
+      "sha256": "59e1ac1fc5071ce0e279354264b30cbe487bea3d5713cc620a5dc52784200102",
+      "bytes": 3691813
+    },
+    "train_inputs.npz": {
+      "sha256": "3f90f842ae83cd8d2c8d734ae604bd77a1eb921a93a3ae67dc593b84ad4951ab",
+      "bytes": 10972244
+    }
+  }
+}

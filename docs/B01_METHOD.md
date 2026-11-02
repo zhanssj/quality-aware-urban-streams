@@ -68,6 +68,7 @@ MAE/RMSE и macro station MAE — диагностические, `units_verifie
 seed/config даёт те же метрики в установленном окружении; это не гарантия bitwise между версиями/OS.
 Время forecast() construction (feature_compute_seconds), estimator fit/predict, полное job время и
 simulated wait сохраняются раздельно. Observe/update и column stacking HGB не входят в таймер forecast().
+job_wall_seconds снят до artifact hashing и записи финального manifest; полная latency CLI process не измерялась.
 В B01 это один пилот, без warmup/повторов/performance claims T06.
 Исторические dataset hashes не выдаются за новую полную проверку HDF5.
 
