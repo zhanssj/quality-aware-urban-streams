@@ -44,6 +44,15 @@ export AQ_DATA_ROOT="$PWD/airqualitybench_tools/data"
 Работает `replay --config configs/b02_smoke.yaml` (затем `b02_pilot.yaml`). `benchmark` пока отсутствует.
 Новый evaluator требует независимый expected plan: `--plan` либо evaluation_plan.json рядом с CSV.
 
+T06: `validate --config configs/t06.yaml` обучает отдельные ablation/augmented модели только на
+train и выполняет pilot/final validation, bootstrap, benchmark и diagnostic freeze.
+Полная матрица сохраняет все predictions локально в NPZ; пересчёт:
+`evaluate-tensor --predictions <case>/predictions.npz --truth <run>/truth.npz --config configs/t06.yaml --out <out>.json`.
+Отдельный benchmark:
+`benchmark --run <T06-run> --manifest-sha256 <SHA256 manifest.json> --out <new-output-directory>`.
+Протокол и границы измерений: [docs/T06_METHOD.md](docs/T06_METHOD.md).
+T07/2025 остаётся закрытым до отдельного разрешения владельца после внешнего ревью freeze.
+
 ## Локальные проверки без сети и исходного датасета
 
 После установки зависимостей:

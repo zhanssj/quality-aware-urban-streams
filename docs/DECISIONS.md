@@ -96,3 +96,17 @@
 - 2025 закрыт непосредственно в reader; доступ будет расширен отдельным изменением T07 после freeze/разрешения.
 - Для smoke используются первые 168 строк 2023 и четыре ID из train-selected списка 669.
   Список не изменяется по validation/test; это техническое чтение, без оценки точности.
+
+## 2026-11-03: назначенный T06 после внешней приёмки B02
+
+- Основание: владелец передал reviews/B02.md, подтвердил merge и назначил продолжение по задачам.
+- Прежние32 станции/параметры/stride; B01/B02 сохраняются. Исправление N2 до augmented fit.
+- До результатов: configs/t06.yaml и docs/T06_METHOD.md (commit a9d6bac): полный validation2024,
+  5 независимых seeds, чистое/augmented обучение с явными весами, все ablations и NaN контроль.
+- Новое хранение all-position predictions в NPZ требует независимого expected plan и проверки
+  exact indices/cohort/model order/context; CSV evaluator не заменяется.
+- Выбор training regime по заранее объявленному equal-scenario mean двух основных HGB;
+  все результаты regimes/ablations сохраняются. Основное сравнение не требует победы QA.
+- Block bootstrap168 steps/1000 replicas; срезы disruption/recovery24/ordinary; benchmark2 warmups/7 repeats.
+- Freeze diagnostic/file_units, без превращения unknown units/time в verified. Gate2025 CLOSED;
+  T07 и инфраструктурный T08 не назначены.

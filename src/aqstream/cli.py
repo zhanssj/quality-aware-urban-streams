@@ -159,7 +159,7 @@ def prepare(config_path: Path) -> Path:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Quality-aware sensor stream research core (B02)")
+    parser = argparse.ArgumentParser(description="Quality-aware sensor stream research core (T06)")
     subparsers = parser.add_subparsers(dest="command", required=True)
     smoke = subparsers.add_parser("prepare", help="read at most 168 train rows and 2–4 stations")
     smoke.add_argument("--config", required=True, type=Path)
@@ -169,13 +169,28 @@ def main(argv: list[str] | None = None) -> int:
         "replay", help="frozen B01 losses/delivery/wait validation pilot"
     )
     replay.add_argument("--config", required=True, type=Path)
+    validation = subparsers.add_parser(
+        "validate", help="T06 train-only regimes and validation matrix"
+    )
+    validation.add_argument("--config", required=True, type=Path)
+    tensor = subparsers.add_parser(
+        "evaluate-tensor", help="recompute complete planned T06 NPZ metrics"
+    )
+    tensor.add_argument("--predictions", required=True, type=Path)
+    tensor.add_argument("--truth", required=True, type=Path)
+    tensor.add_argument("--config", required=True, type=Path)
+    tensor.add_argument("--out", required=True, type=Path)
+    benchmark = subparsers.add_parser("benchmark", help="warmup/repeated frozen T06 compute jobs")
+    benchmark.add_argument("--run", required=True, type=Path)
+    benchmark.add_argument("--manifest-sha256", required=True)
+    benchmark.add_argument("--out", required=True, type=Path)
     evaluate = subparsers.add_parser("evaluate", help="recompute shared-target validation metrics")
     evaluate.add_argument("--predictions", required=True, type=Path)
     evaluate.add_argument("--out", required=True, type=Path)
     evaluate.add_argument("--plan", type=Path, help="expected plan; default alongside predictions")
     evaluate.add_argument("--split", choices=["validation"], default="validation")
     export = subparsers.add_parser(
-        "export-review", help="export whitelisted source/docs/B01/B02 evidence"
+        "export-review", help="export whitelisted source/docs/compact experiment evidence"
     )
     export.add_argument("--out", required=True, type=Path)
     args = parser.parse_args(argv)
@@ -202,6 +217,27 @@ def main(argv: list[str] | None = None) -> int:
             from aqstream.replay.runner import run_replay
 
             print(f"PASS B02 controlled replay; artifacts: {run_replay(args.config)}")
+        elif args.command == "validate":
+            from aqstream.validation.runner import run_validation
+
+            print(f"PASS T06 validation; artifacts: {run_validation(args.config)}")
+        elif args.command == "evaluate-tensor":
+            from aqstream.artifacts import write_json
+            from aqstream.validation.config import load_config
+            from aqstream.validation.matrix import bootstrap_options
+            from aqstream.validation.metrics import evaluate_npz
+
+            metrics = evaluate_npz(
+                args.predictions, args.truth, bootstrap=bootstrap_options(load_config(args.config))
+            )
+            args.out.parent.mkdir(parents=True, exist_ok=True)
+            write_json(args.out, metrics)
+            print(f"PASS planned T06 tensor metrics: {args.out}")
+        elif args.command == "benchmark":
+            from aqstream.validation.benchmark import run_benchmark
+
+            output = run_benchmark(args.run, args.manifest_sha256, args.out)
+            print(f"PASS T06 benchmark; artifacts: {output}")
         elif args.command == "export-review":
             from aqstream.artifacts import export_review
 
