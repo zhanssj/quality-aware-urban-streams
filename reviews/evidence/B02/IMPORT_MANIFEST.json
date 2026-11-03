@@ -1,0 +1,136 @@
+{
+  "source_folder": "B02_review_bundle",
+  "files": [
+    {
+      "source": "probe_fingerprint.py",
+      "repository_path": "reviews/evidence/B02/probe_fingerprint.py",
+      "sha256": "76af9ce370609a908716c4f1fe844da7e153d793d8685026a848d6010e484b80"
+    },
+    {
+      "source": "README_RU.md",
+      "repository_path": "reviews/evidence/B02/README_RU.md",
+      "sha256": "fcfbc225ee969692e264f240b956ee86493a9fa995027e080b92a619147af9e1"
+    },
+    {
+      "source": "B02.md",
+      "repository_path": "reviews/B02.md",
+      "sha256": "b25d3d53640df4594cf21b99697cce779cd574085943d58a91d238f3416b3d6c"
+    },
+    {
+      "source": "test_b02_review_checks.py",
+      "repository_path": "reviews/evidence/B02/test_b02_review_checks.py",
+      "sha256": "9965b03656e1f015d7b1fe7c16d93a9fa25bb78bc03b9995e46e3a2052f12ccf"
+    },
+    {
+      "source": "CODEX_HANDOFF.txt",
+      "repository_path": "reviews/evidence/B02/CODEX_HANDOFF.txt",
+      "sha256": "9e7c3a9d641c912daf4d2db555f82ec6424b3f8eb7db6b3d867d8a18e5887499"
+    },
+    {
+      "source": "isolated_reproduction/run_isolated_checks.py",
+      "repository_path": "reviews/evidence/B02/isolated_reproduction/run_isolated_checks.py",
+      "sha256": "9eb6aa541f9cb613b69b32e877e202e8e880aa236ae0906fb87d229373c78c00"
+    },
+    {
+      "source": "evidence/ci_observation.json",
+      "repository_path": "reviews/evidence/B02/evidence/ci_observation.json",
+      "sha256": "ab75e8c15d70c0446bbf54d9d7521d760617f7e97110b4949fe34f829380aae2"
+    },
+    {
+      "source": "evidence/fingerprint_probe.json",
+      "repository_path": "reviews/evidence/B02/evidence/fingerprint_probe.json",
+      "sha256": "f05b084f838b388daf6d3f0dc90199766cece7945924467a90a1482845ab48bf"
+    },
+    {
+      "source": "evidence/independent_tests.txt",
+      "repository_path": "reviews/evidence/B02/evidence/independent_tests.txt",
+      "sha256": "a1f014bb38e67afbdc9434b646cd39c3526bce55dac53dc7018ccdb1d94fccb2"
+    },
+    {
+      "source": "evidence/initial_python313_import.txt",
+      "repository_path": "reviews/evidence/B02/evidence/initial_python313_import.txt",
+      "sha256": "2b360bae1f1a64627d814621f75ff84940e1ee0879ba5329cd6cedeef381cc4d"
+    },
+    {
+      "source": "evidence/derived_comparisons.json",
+      "repository_path": "reviews/evidence/B02/evidence/derived_comparisons.json",
+      "sha256": "b8d2f349e2226a51b9639d34d68519f3283fe0c108ad39164cac9e4d136ebae0"
+    },
+    {
+      "source": "evidence/local_environment.json",
+      "repository_path": "reviews/evidence/B02/evidence/local_environment.json",
+      "sha256": "3a23f450eb659bfcc15f4b0cf9e7872ced0909808b0cb709d8934b2356c34726"
+    },
+    {
+      "source": "evidence/source_integrity.json",
+      "repository_path": "reviews/evidence/B02/evidence/source_integrity.json",
+      "sha256": "89200236b0475a287dcc719fc16285680863bf1c9e69270a1d21f237304951bd"
+    },
+    {
+      "source": "isolated_reproduction/tests/test_b02_review_checks.py",
+      "repository_path": "reviews/evidence/B02/isolated_reproduction/tests/test_b02_review_checks.py",
+      "sha256": "9965b03656e1f015d7b1fe7c16d93a9fa25bb78bc03b9995e46e3a2052f12ccf"
+    },
+    {
+      "source": "isolated_reproduction/core/aqstream/evaluation.py",
+      "repository_path": "reviews/evidence/B02/isolated_reproduction/core/aqstream/evaluation.py",
+      "sha256": "a7e994e9ce09aedc6bcea43a069914814421d649a4e8d6164e8cc9da313329e9"
+    },
+    {
+      "source": "isolated_reproduction/core/aqstream/artifacts.py",
+      "repository_path": "reviews/evidence/B02/isolated_reproduction/core/aqstream/artifacts.py",
+      "sha256": "ce63405f9adb309675e2e189c77af5eb7054d63c96ec6b1f93b1aa4dde9740b5"
+    },
+    {
+      "source": "isolated_reproduction/core/aqstream/data.py",
+      "repository_path": "reviews/evidence/B02/isolated_reproduction/core/aqstream/data.py",
+      "sha256": "bd9edf86634d273d17e4c56fbc47965af2181e53a540709d634a7b3fab1ed203"
+    },
+    {
+      "source": "isolated_reproduction/core/aqstream/__init__.py",
+      "repository_path": "reviews/evidence/B02/isolated_reproduction/core/aqstream/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "isolated_reproduction/core/aqstream/prediction_plan.py",
+      "repository_path": "reviews/evidence/B02/isolated_reproduction/core/aqstream/prediction_plan.py",
+      "sha256": "4a9fe9b31bc34e35b1f29990a462be0e5263879ccf56a8dcdf936e1a8282d8cf"
+    },
+    {
+      "source": "isolated_reproduction/core/aqstream/replay/delivery.py",
+      "repository_path": "reviews/evidence/B02/isolated_reproduction/core/aqstream/replay/delivery.py",
+      "sha256": "c289cf90094c73192def89642a22ed638c5aaaba8c720900aa6e7b3d6e81ef0e"
+    },
+    {
+      "source": "isolated_reproduction/core/aqstream/replay/calendars.py",
+      "repository_path": "reviews/evidence/B02/isolated_reproduction/core/aqstream/replay/calendars.py",
+      "sha256": "63fcc9a7ff3b7c43f0f41df984ed32caaa5c544a9821c78a0e584b6a95a8d63e"
+    },
+    {
+      "source": "isolated_reproduction/core/aqstream/replay/__init__.py",
+      "repository_path": "reviews/evidence/B02/isolated_reproduction/core/aqstream/replay/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "isolated_reproduction/core/aqstream/replay/stream.py",
+      "repository_path": "reviews/evidence/B02/isolated_reproduction/core/aqstream/replay/stream.py",
+      "sha256": "c4a8bf8f85ed89a6a95702ee232b780baead890c070c9ccfcfeae601f877c86b"
+    },
+    {
+      "source": "isolated_reproduction/core/aqstream/replay/mixture.py",
+      "repository_path": "reviews/evidence/B02/isolated_reproduction/core/aqstream/replay/mixture.py",
+      "sha256": "aae8e1172de2ee4b036908043601e1a98adb666860740fa0edc0ee3ad6a52b1c"
+    },
+    {
+      "source": "isolated_reproduction/core/aqstream/features/__init__.py",
+      "repository_path": "reviews/evidence/B02/isolated_reproduction/core/aqstream/features/__init__.py",
+      "sha256": "b843ecd22e5bf9ec865ea7403a2e1588d6688b53e7a0dd4ca71972e2a01e1cd3"
+    },
+    {
+      "source": "isolated_reproduction/core/aqstream/features/causal.py",
+      "repository_path": "reviews/evidence/B02/isolated_reproduction/core/aqstream/features/causal.py",
+      "sha256": "b2c8dfd3f942fba96c44e6c493f9506d21ca4f07441b3b3a4582669712c8a737"
+    }
+  ],
+  "scripts_executed_during_import": false
+}

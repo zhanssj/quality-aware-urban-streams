@@ -1,6 +1,6 @@
 # T06: Матрица validation, ablation, benchmark и freeze
 
-Статус: TODO
+Статус: IN_PROGRESS, назначено владельцем после приёмки и merge B02 2026-11-03.
 
 Предусловия: T05 принят.
 

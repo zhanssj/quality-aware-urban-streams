@@ -1,0 +1,28 @@
+task_id: T06
+baseline_run: artifacts/B01-20261102T095148Z-df565b77
+baseline_manifest_sha256: ae9735526dd15d9cd3a94e442270b0d77f4cd4aec3c677241fb5c66c6c51d484
+validation_year: 2024
+validation_steps: 8784
+pilot_steps: 672
+pilot_seed_count: 3
+validation_seeds: [4101, 4102, 4103, 4104, 4105]
+train_mixture_seeds: [2101, 2102, 2103]
+scenarios: [clean_source, random_drop05, random_drop10, random_drop20, single_block6, single_block24, group_block6, group_block24, delay10, delay30, random10_delay30]
+waits: [0, 5, 15]
+training_mixture_weights:
+  clean_source: 0.25
+  random_drop10: 0.25
+  group_block24: 0.25
+  delay30: 0.25
+train_stride: 8
+model_seed: 2026
+batch_steps: 168
+threads: 2
+max_rss_mb: 2048
+bootstrap_block_steps: 168
+bootstrap_replicates: 1000
+bootstrap_seed: 5101
+recovery_steps: 24
+benchmark_steps: 168
+benchmark_warmup: 2
+benchmark_repeats: 7

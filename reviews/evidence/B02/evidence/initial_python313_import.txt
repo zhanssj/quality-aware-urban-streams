@@ -1,0 +1,17 @@
+
+==================================== ERRORS ====================================
+__________________ ERROR collecting test_b02_review_checks.py __________________
+mnt/data/B02_review_work/tests/test_b02_review_checks.py:14: in <module>
+    from aqstream.evaluation import MODEL_NAMES, evaluate_predictions
+mnt/data/B02_review_work/core/aqstream/evaluation.py:9: in <module>
+    from aqstream.prediction_plan import PredictionPlan
+mnt/data/B02_review_work/core/aqstream/prediction_plan.py:13: in <module>
+    class PredictionPlan:
+mnt/data/B02_review_work/core/aqstream/prediction_plan.py:102: in PredictionPlan
+    def load(cls, path: Path) -> PredictionPlan:
+                                 ^^^^^^^^^^^^^^
+E   NameError: name 'PredictionPlan' is not defined
+=========================== short test summary info ============================
+ERROR mnt/data/B02_review_work/tests/test_b02_review_checks.py - NameError: name 'PredictionPlan' is not defined
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.13s

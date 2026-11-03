@@ -1,0 +1,9 @@
+{
+  "calendar_count": 1,
+  "grid_steps": 80,
+  "stations": 2,
+  "yielded_feature_frames": 80,
+  "full_fingerprint_calls": 80,
+  "unique_returned_calendar_hashes": 1,
+  "timing_benchmark": false
+}

@@ -1,0 +1,48 @@
+{
+  "commit": "a78524238991e98e014b451068dac5b9dc1edeec",
+  "files": [
+    {
+      "file": "src/aqstream/features/causal.py",
+      "expected_blob_sha": "624c74df11848e3f02fb3707b3a38fc6d83090b0",
+      "actual_blob_sha": "624c74df11848e3f02fb3707b3a38fc6d83090b0",
+      "match": true
+    },
+    {
+      "file": "src/aqstream/replay/delivery.py",
+      "expected_blob_sha": "68040d033837cdb3e4e542874fdd76ed3106e217",
+      "actual_blob_sha": "68040d033837cdb3e4e542874fdd76ed3106e217",
+      "match": true
+    },
+    {
+      "file": "src/aqstream/prediction_plan.py",
+      "expected_blob_sha": "78a3c01db7aebf48a2c0367374de1fc193be8d60",
+      "actual_blob_sha": "78a3c01db7aebf48a2c0367374de1fc193be8d60",
+      "match": true
+    },
+    {
+      "file": "src/aqstream/evaluation.py",
+      "expected_blob_sha": "6502a17b20579b1716f31ab0e714c20f9fabdfb6",
+      "actual_blob_sha": "6502a17b20579b1716f31ab0e714c20f9fabdfb6",
+      "match": true
+    },
+    {
+      "file": "src/aqstream/replay/calendars.py",
+      "expected_blob_sha": "165171e547e502dd42e408a14aebb77b40c77971",
+      "actual_blob_sha": "165171e547e502dd42e408a14aebb77b40c77971",
+      "match": true
+    },
+    {
+      "file": "src/aqstream/replay/stream.py",
+      "expected_blob_sha": "815a580a8485ba7ace4e6caece3a074e9d980d3f",
+      "actual_blob_sha": "815a580a8485ba7ace4e6caece3a074e9d980d3f",
+      "match": true
+    },
+    {
+      "file": "src/aqstream/replay/mixture.py",
+      "expected_blob_sha": "ca5630a5ca97ccfedb8203dd2595d5e37bb9e0e7",
+      "actual_blob_sha": "ca5630a5ca97ccfedb8203dd2595d5e37bb9e0e7",
+      "match": true
+    }
+  ],
+  "harness": "Read-only source copies with review-only import adapters for data reader and unused calendar file IO; adapters do not implement prediction/feature logic. No HDF5 or model runs."
+}

@@ -3,7 +3,7 @@ import pytest
 
 from aqstream.data import DataContractError
 from aqstream.features import FallbackState, YearGrid
-from aqstream.replay.calendars import ScenarioSpec, make_calendar, training_mixture
+from aqstream.replay.calendars import Calendar, ScenarioSpec, make_calendar, training_mixture
 from aqstream.replay.mixture import weighted_training_samples
 
 
@@ -120,3 +120,34 @@ def test_weighted_training_generator_preserves_truth_and_total_weight_per_sample
                 train_seed=2101,
             )
         )
+
+
+def test_training_fingerprint_is_computed_once_per_calendar(monkeypatch):
+    values = np.arange(160, dtype=float).reshape(80, 2)
+    valid = np.ones_like(values, dtype=bool)
+    fitted = FallbackState(("a", "b"), (7.0, 8.0), (1, 1), 7.5, (2023,))
+    specs = (ScenarioSpec("clean"), ScenarioSpec("drop", random_drop_rate=0.3))
+    arguments = dict(specs=specs, weights=(0.25, 0.75), train_seed=2101)
+    original = list(
+        weighted_training_samples(values, valid, fitted, YearGrid((2023,), (80,)), **arguments)
+    )
+    calls = []
+    original_property = Calendar.fingerprint.fget
+
+    def counted(calendar):
+        calls.append(calendar.spec.name)
+        return original_property(calendar)
+
+    monkeypatch.setattr(Calendar, "fingerprint", property(counted))
+    optimized = list(
+        weighted_training_samples(values, valid, fitted, YearGrid((2023,), (80,)), **arguments)
+    )
+    assert calls == ["clean", "drop"]
+    for before, after in zip(original, optimized, strict=True):
+        assert before.calendar_sha256 == after.calendar_sha256
+        assert before.weight == after.weight
+        assert before.features.sample_ids == after.features.sample_ids
+        np.testing.assert_array_equal(before.features.common, after.features.common)
+        np.testing.assert_array_equal(before.features.quality, after.features.quality)
+        np.testing.assert_array_equal(before.truth.values, after.truth.values)
+        np.testing.assert_array_equal(before.truth.source_valid, after.truth.source_valid)

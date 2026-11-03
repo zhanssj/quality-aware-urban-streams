@@ -1,0 +1,17 @@
+{
+  "source": "reports/B02/seeds_summary.csv at a78524238991e98e014b451068dac5b9dc1edeec",
+  "delay30_wait0_to_wait15": {
+    "persistence_mae_reduction_pct": 5.911184098996506,
+    "quality_aware_mae_reduction_pct": 3.0940185344322226,
+    "availability_pp": 14.353918650793652,
+    "remaining_lead_minutes": [
+      60,
+      45
+    ]
+  },
+  "pilot_scheduled": 21504,
+  "pilot_scored": 20703,
+  "pilot_missing_truth": 801,
+  "full_control_scheduled": 281088,
+  "reproduced_from_full_predictions": false
+}

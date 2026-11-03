@@ -1,0 +1,26 @@
+Внешнее ревью B02:
+APPROVED для N1 + T04 + T05 на HEAD a78524238991e98e014b451068dac5b9dc1edeec.
+Source tree совпадает с code/pilot commit f500c01d6f64311bba743c61fdb86a6715758c23.
+
+Сохрани текст B02.md как reviews/B02.md и зафиксируй это как внешнее решение,
+а не собственный APPROVED агента. Историю handoff и исходные evidence не переписывай.
+
+N1 из B01 закрыт. Единственное новое замечание N2 неблокирующее:
+mixture.py:48 вызывает календарный fingerprint на каждом временном шаге;
+calendars.py:72-88 заново хеширует полные массивы. Перенеси эту оптимизацию в начало
+следующего назначенного блока перед augmented fit: один hash на календарь,
+неизменность samples/weights/labels/hash, регрессионная проверка количества вычислений.
+Отдельный цикл исправления и ревью B02 ради N2 не нужен.
+
+Дополнительный файл test_b02_review_checks.py можно добавить в tests и отформатировать
+проектным Ruff. Он не требует реальных HDF5 или моделей. Из isolated_reproduction
+НЕ переносить import adapters или compatibility harness в рабочий src.
+
+Сохранённые MAE/RMSE и нулевой контроль этой проверкой независимо на исходных данных
+не воспроизводились; не переименовывать их статус в REPRODUCED_BY_REVIEWER.
+CI logs прочитаны: Ubuntu159passed, Windows158passed+1longdouble skip.
+Изолированные reviewer array/CSV tests:28passed.
+
+B02 не доказал стабильного выигрыша Quality-aware. Сохрани результаты как есть.
+Любой augmented-training результат должен иметь отдельный training_mode и provenance.
+Test2025, merge/main, T07 и запуск следующего блока требуют назначения владельца.

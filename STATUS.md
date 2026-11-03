@@ -1,33 +1,47 @@
 # Статус
 
-Состояние проекта: B02 READY_FOR_REVIEW (N1 + T04 + T05), 2026-11-03.
+Состояние проекта: B02 APPROVED внешне; T06 IN_PROGRESS, назначено владельцем 2026-11-03.
 Новый полный аудит: не назначен и не нужен.
-Текущий блок: B02 завершён в назначенных границах; ожидает внешнего ревью. Frozen B01 baseline сохранён.
+Текущая задача: T06 (включая N2 до augmented fit). B01/B02 сохранены.
 Remote repository: https://github.com/zhanssj/quality-aware-urban-streams.git.
-Main подтянут до ea9205c47832a27f0331b6fe0f0eda405eeef6be; tree совпал с reviewed HEAD bab6d90.
-Рабочая ветка: codex/B02-losses-arrival. В неё перенесён commit приёмки B01 из отдельной docs-ветки.
+Main подтянут до fb17f92a8b2c45b4ce909e7995fa33da95f44c43; tree совпал с reviewed B02 HEAD a785242.
+Рабочая ветка: codex/T06-validation-freeze.
 Test gate 2025: CLOSED.
 Physical units: UNVERIFIED.
 Time semantics of published HDF5: UNVERIFIED; development convention documented.
 
 | Задача | Статус | Code commit | Handoff | Review |
 |---|---|---|---|---|
-| B02 | READY_FOR_REVIEW | f500c01d6f64311bba743c61fdb86a6715758c23 | handoffs/B02.md | ожидается внешнее |
+| B02 | APPROVED (внешнее) | f500c01d6f64311bba743c61fdb86a6715758c23 | handoffs/B02.md | reviews/B02.md; подтверждено владельцем/merge |
 | B01 | APPROVED (внешнее) | 0a70134e32d86c5216e6f42e9647adb780756c64 | handoffs/B01.md | reviews/B01.md; подтверждено владельцем |
 | T01 | APPROVED (внешнее) | 42e3a4457b6beed6adb6a273d0353fb5f05e9ab4 | handoffs/T01.md | reviews/T01-R1.md; подтверждено владельцем |
 | T02 | APPROVED внешне в B01 | 0a70134e32d86c5216e6f42e9647adb780756c64 | handoffs/B01.md | reviews/B01.md |
 | T03 | APPROVED внешне в B01 | 0a70134e32d86c5216e6f42e9647adb780756c64 | handoffs/B01.md | reviews/B01.md |
-| T04 | READY_FOR_REVIEW в B02 | f500c01d6f64311bba743c61fdb86a6715758c23 | handoffs/B02.md | ожидается внешнее |
-| T05 | READY_FOR_REVIEW в B02 | f500c01d6f64311bba743c61fdb86a6715758c23 | handoffs/B02.md | ожидается внешнее |
-| T06 | TODO | - | - | - |
+| T04 | APPROVED внешне в B02 | f500c01d6f64311bba743c61fdb86a6715758c23 | handoffs/B02.md | reviews/B02.md |
+| T05 | APPROVED внешне в B02 | f500c01d6f64311bba743c61fdb86a6715758c23 | handoffs/B02.md | reviews/B02.md |
+| T06 | IN_PROGRESS | - | handoffs/T06.md | в конце задачи |
 | T07 | TODO | - | - | - |
 | T08 | DEFERRED_OPTIONAL | - | - | - |
 
 Допустимые переходы: TODO -> IN_PROGRESS -> READY_FOR_REVIEW -> APPROVED или CHANGES_REQUESTED.
 BLOCKED допустим с конкретной причиной и выполненной независимой частью задачи.
 Codex не ставит APPROVED сам. Следующая задача запускается по отдельному указанию владельца.
-Владелец явно назначил B02 = N1 + T04 + T05; внутренние gates пройдены.
-После общего handoff работа остановлена. T06–T08 и test-2025 не назначены.
+Владелец после приёмки/merge B02 назначил продолжение: текущая задача T06.
+После handoffs/T06.md остановиться. T07/T08 и test-2025 не назначены.
+
+## Внешняя приёмка B02 и назначение T06, 2026-11-03
+
+APPROVED из reviews/B02.md для N1/T04/T05, reviewed HEAD a785242; code/pilot f500c01.
+Владелец подтвердил merge; main fb17f92 имеет тот же tree. Импортированы26 файлов с проверкой
+предоставленного SHA256.json, архив reviews/evidence/B02; compatibility adapters не перенесены в src.
+Внешний reviewer наблюдал Ubuntu159passed, Windows158passed+1skip, isolated28passed;
+это внешние свидетельства, не новый локальный повтор real pilot.
+N2 неблокирующее: fingerprint вычисляется один раз на calendar перед augmented fit.
+Локальный preliminary gate после оптимизации и переноса reviewer tests:37passed, Ruff PASS;
+лог artifacts/T06-verification/N2_gate.txt. Final verification будет на отдельном code commit.
+До результатов зафиксированы configs/t06.yaml и docs/T06_METHOD.md: прежние32 станции,
+полная validation2024, 5 seeds, отдельные training regimes, ablations, bootstrap/benchmark/freeze.
+2025 CLOSED, физические ограничения сохранены; новый полный аудит не назначен.
 
 ## B02, передача 2026-11-03
 

@@ -15,3 +15,5 @@ airqualitybench_tools/** -text whitespace=cr-at-eol
 # Preserve the supplied external review archive and its SHA256 provenance.
 reviews/B01.md -text whitespace=cr-at-eol
 reviews/evidence/B01/** -text whitespace=cr-at-eol
+reviews/B02.md -text whitespace=cr-at-eol
+reviews/evidence/B02/** -text whitespace=cr-at-eol

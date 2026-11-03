@@ -1,0 +1,19 @@
+{
+  "python": "3.13.5",
+  "numpy": "2.3.5",
+  "pytest": "9.0.2",
+  "result": "28 passed in 4.89s",
+  "scope": "Isolated array/CSV core tests; not a full install or complete original suite",
+  "source_files_verified": 7,
+  "adaptations": [
+    "Import-only DataContractError/HDF5Reader adapter: reader construction deliberately fails; not used by tests",
+    "Unused calendar save IO adapter deliberately fails; Calendar.save not tested locally",
+    "Compile prediction_plan.py with postponed annotation flag under Python 3.13 to support its Python-3.14 self-return type; source bytes unchanged"
+  ],
+  "original_project_requirement": "Python >=3.14; full run verified by CI, not local execution",
+  "network_clone": "NOT_AVAILABLE: container DNS could not resolve github.com",
+  "real_hdf5_or_pickle_loaded": false,
+  "real_pilot_rerun": false,
+  "full_prediction_csv_recomputed": false,
+  "remote_writes": false
+}

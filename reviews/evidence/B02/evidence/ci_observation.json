@@ -1,0 +1,31 @@
+{
+  "observation": "Live GitHub connector job statuses and decoded logs read during this review",
+  "run_id": 41586506581,
+  "head_sha": "a78524238991e98e014b451068dac5b9dc1edeec",
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "job_id": 125753143358,
+      "os": "ubuntu-latest",
+      "python": "3.14.9",
+      "pytest": "159 passed in 4.71s",
+      "ruff": "PASS",
+      "cli_help": "PASS"
+    },
+    {
+      "job_id": 125753143501,
+      "os": "windows-latest",
+      "python": "3.14.10",
+      "pytest": "158 passed, 1 skipped in 5.46s",
+      "skip_reason": "Platform has no wider-than-float64 longdouble",
+      "ruff": "PASS",
+      "cli_help": "PASS"
+    }
+  ],
+  "src_aqstream_tree": "7405e965371426254791b1e576ce74931d559df7",
+  "same_source_tree_at_commits": [
+    "f500c01d6f64311bba743c61fdb86a6715758c23",
+    "a78524238991e98e014b451068dac5b9dc1edeec"
+  ]
+}

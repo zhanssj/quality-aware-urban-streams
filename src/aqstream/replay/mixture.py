@@ -37,7 +37,7 @@ def weighted_training_samples(
         source_valid[:-1], fitted.station_ids, specs=specs, weights=weights, train_seed=train_seed
     )
 
-    def record(calendar, weight, frame):
+    def record(calendar_hash, weight, frame):
         target = frame.sample_ids[0].target_index
         valid = source_valid[target] & np.isfinite(values[target])
         truth = TruthFrame(
@@ -45,10 +45,11 @@ def weighted_training_samples(
             readonly(np.where(valid, values[target], np.nan)),
             readonly(valid.copy()),
         )
-        return WeightedTrainingSample(calendar.fingerprint, weight, frame, truth)
+        return WeightedTrainingSample(calendar_hash, weight, frame, truth)
 
     for calendar, weight in views:
-        yield record(calendar, weight, CausalFeatures(fitted, grid).forecast())
+        calendar_hash = calendar.fingerprint
+        yield record(calendar_hash, weight, CausalFeatures(fitted, grid).forecast())
         for snapshot in replay_snapshots(
             values,
             source_valid,
@@ -59,4 +60,4 @@ def weighted_training_samples(
             target_stop=len(values),
             waits=(0,),
         ):
-            yield record(calendar, weight, snapshot.features)
+            yield record(calendar_hash, weight, snapshot.features)
