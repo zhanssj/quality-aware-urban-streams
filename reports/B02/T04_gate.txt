@@ -1,0 +1,7 @@
+code_commit: f500c01d6f64311bba743c61fdb86a6715758c23
+dirty_tree: false
+command: ['C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe', '-m', 'pytest', 'tests/test_calendars.py', '-q']
+exit_code: 0
+
+........                                                                 [100%]
+8 passed in 0.10s
