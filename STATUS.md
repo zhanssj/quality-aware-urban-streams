@@ -1,22 +1,24 @@
 # Статус
 
-Состояние проекта: B01 READY_FOR_REVIEW (T02 + T03 выполнены; ожидается внешнее ревью).
+Состояние проекта: B02 READY_FOR_REVIEW (N1 + T04 + T05), 2026-11-03.
 Новый полный аудит: не назначен и не нужен.
-Текущий блок: B01 завершён. Gate T02 пройден до T03, общий handoff подготовлен; работа остановлена.
+Текущий блок: B02 завершён в назначенных границах; ожидает внешнего ревью. Frozen B01 baseline сохранён.
 Remote repository: https://github.com/zhanssj/quality-aware-urban-streams.git.
-Рабочая ветка: codex/B01-features-baselines от main 444f816. Main подтянут по указанию владельца.
+Main подтянут до ea9205c47832a27f0331b6fe0f0eda405eeef6be; tree совпал с reviewed HEAD bab6d90.
+Рабочая ветка: codex/B02-losses-arrival. В неё перенесён commit приёмки B01 из отдельной docs-ветки.
 Test gate 2025: CLOSED.
 Physical units: UNVERIFIED.
 Time semantics of published HDF5: UNVERIFIED; development convention documented.
 
 | Задача | Статус | Code commit | Handoff | Review |
 |---|---|---|---|---|
-| B01 | READY_FOR_REVIEW | 0a70134e32d86c5216e6f42e9647adb780756c64 | handoffs/B01.md | PENDING (внешнее) |
+| B02 | READY_FOR_REVIEW | f500c01d6f64311bba743c61fdb86a6715758c23 | handoffs/B02.md | ожидается внешнее |
+| B01 | APPROVED (внешнее) | 0a70134e32d86c5216e6f42e9647adb780756c64 | handoffs/B01.md | reviews/B01.md; подтверждено владельцем |
 | T01 | APPROVED (внешнее) | 42e3a4457b6beed6adb6a273d0353fb5f05e9ab4 | handoffs/T01.md | reviews/T01-R1.md; подтверждено владельцем |
-| T02 | READY_FOR_REVIEW в B01 | 0a70134e32d86c5216e6f42e9647adb780756c64 | handoffs/B01.md | локальный gate PASS; внешнее PENDING |
-| T03 | READY_FOR_REVIEW в B01 | 0a70134e32d86c5216e6f42e9647adb780756c64 | handoffs/B01.md | внешнее PENDING |
-| T04 | TODO | - | - | - |
-| T05 | TODO | - | - | - |
+| T02 | APPROVED внешне в B01 | 0a70134e32d86c5216e6f42e9647adb780756c64 | handoffs/B01.md | reviews/B01.md |
+| T03 | APPROVED внешне в B01 | 0a70134e32d86c5216e6f42e9647adb780756c64 | handoffs/B01.md | reviews/B01.md |
+| T04 | READY_FOR_REVIEW в B02 | f500c01d6f64311bba743c61fdb86a6715758c23 | handoffs/B02.md | ожидается внешнее |
+| T05 | READY_FOR_REVIEW в B02 | f500c01d6f64311bba743c61fdb86a6715758c23 | handoffs/B02.md | ожидается внешнее |
 | T06 | TODO | - | - | - |
 | T07 | TODO | - | - | - |
 | T08 | DEFERRED_OPTIONAL | - | - | - |
@@ -24,8 +26,51 @@ Time semantics of published HDF5: UNVERIFIED; development convention documented.
 Допустимые переходы: TODO -> IN_PROGRESS -> READY_FOR_REVIEW -> APPROVED или CHANGES_REQUESTED.
 BLOCKED допустим с конкретной причиной и выполненной независимой частью задачи.
 Codex не ставит APPROVED сам. Следующая задача запускается по отдельному указанию владельца.
-Владелец явно назначил B01 = T02 + T03; между ними достаточно внутренних тестов T02.
-После общего handoff остановиться; T04 и test-2025 не назначены.
+Владелец явно назначил B02 = N1 + T04 + T05; внутренние gates пройдены.
+После общего handoff работа остановлена. T06–T08 и test-2025 не назначены.
+
+## B02, передача 2026-11-03
+
+PASS на code commit f500c01, чистая рабочая копия при проверках/прогонах 2026-11-02:
+N1 gate 15 passed; T04 gate 8 passed; T05 gate 9 passed; replay synthetic end-to-end 7 passed;
+полный pytest 158 passed, 1 Windows longdouble skip; ruff check/format exit 0.
+Перенесены 14 reviewer checks B01 с адаптацией fixtures к независимому expected plan.
+Сценарии и ограниченная матрица заранее сохранены в configs/b02_smoke.yaml и b02_pilot.yaml.
+Real smoke: B02-20261102T114608Z-7d38a7c8, 8 policy cases, PASS.
+Real pilot: B02-20261102T114700Z-a0e807a3, 51 policy case + 1 full zero-control, PASS.
+Все 281088 predictions на метод в zero-control совпали с B01 точно (max difference 0).
+Во всех pilot cases: 21504 scheduled/predicted на метод, 20703 общих scored targets,
+801 naturally missing truth, coverage 100%. Все real модели/cohort/fallback остались frozen.
+N1 закрыт в реализации B02: CSV сверяется с независимым планом и run/scenario/wait;
+старый B01 CSV повторно проверен без изменения его численных метрик и файлов.
+
+Ожидание 15 simulated minutes в delay30 уменьшило mean MAE Persistence с 1.934206 до 1.819872,
+сократив remaining lead с 60 до 45 simulated minutes. Это диагностический результат,
+без доказательства статистической значимости и без утверждения о физической latency.
+QA не показал устойчивого преимущества перед Standard; параметры по результатам не менялись.
+Sampled peak RSS 229875712 bytes; controlled workload 61.056987 seconds (границы таймера в handoff).
+2026-11-03 проверены размеры/SHA256 всех 10 original B01, 60 smoke и 365 pilot artifacts;
+исходный manifest B01 и все его артефакты неизменны. Source/lock не менялись после code commit.
+Evidence: reports/B02/. Общая передача и ограничения: handoffs/B02.md.
+Augmented real fit, T06 matrix/ablation/freeze/benchmark, T07 и чтение HDF5 2025: NOT_RUN.
+Новый GitHub CI/Linux: не наблюдался в локальном evidence. READY_FOR_REVIEW не означает APPROVED.
+
+## Внешняя приёмка B01, 2026-11-02
+
+Вердикт APPROVED перенесён из reviews/B01.md, подтверждён владельцем. Reviewed HEAD bab6d90;
+исходный код пилота 0a70134. Main ea9205c — squash merge с тем же полным tree.
+Архив исходных свидетельств: reviews/evidence/B01/; IMPORT_MANIFEST.json связывает пути и SHA256.
+Проверена целостность 11 файлов по предоставленному SHA256.json. Скрипты ревью сохранены как
+свидетельства, не добавлены в автоматическую test collection и не запускались в этом переносе.
+Проверяющий наблюдал CI: Linux 106 passed; Windows 105 passed, 1 skipped. Это сведения внешнего
+ревью, не новые локальные проверки и не независимое повторение реального пилота.
+
+N1 (неблокирующее): evaluator считает denominator coverage по имеющимся строкам CSV,
+не сверяя набор sample IDs с ожидаемым планом. Доработать в начале отдельно назначенного B02,
+до массовой оценки сценариев: expected IDs и контекст run/scenario/wait; missing/extra/replaced IDs
+должны обнаруживаться до PASS. Это не свидетельство потери строк текущего пилота.
+Отдельный fix B01 не назначен. Результаты/cohort/параметры B01 сохранены.
+На момент приёмки B01 блок B02 и HDF5 2025 ещё не запускались; текущий B02 описан выше.
 
 ## B01, 2026-11-02
 

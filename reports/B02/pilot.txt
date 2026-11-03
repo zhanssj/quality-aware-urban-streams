@@ -1,0 +1,38 @@
+code_commit: f500c01d6f64311bba743c61fdb86a6715758c23
+dirty_tree: false
+command: python -m aqstream replay --config configs/b02_pilot.yaml
+
+B02 completed zero_control_full_seed0: waits=[0], planned=281088
+B02 completed clean_source_seed0: waits=[0, 5, 15], planned=21504
+B02 completed random_drop05_seed3101: waits=[0], planned=21504
+B02 completed random_drop05_seed3102: waits=[0], planned=21504
+B02 completed random_drop05_seed3103: waits=[0], planned=21504
+B02 completed random_drop10_seed3101: waits=[0], planned=21504
+B02 completed random_drop10_seed3102: waits=[0], planned=21504
+B02 completed random_drop10_seed3103: waits=[0], planned=21504
+B02 completed random_drop20_seed3101: waits=[0], planned=21504
+B02 completed random_drop20_seed3102: waits=[0], planned=21504
+B02 completed random_drop20_seed3103: waits=[0], planned=21504
+B02 completed single_block6_seed3101: waits=[0], planned=21504
+B02 completed single_block6_seed3102: waits=[0], planned=21504
+B02 completed single_block6_seed3103: waits=[0], planned=21504
+B02 completed single_block24_seed3101: waits=[0], planned=21504
+B02 completed single_block24_seed3102: waits=[0], planned=21504
+B02 completed single_block24_seed3103: waits=[0], planned=21504
+B02 completed group_block6_seed3101: waits=[0], planned=21504
+B02 completed group_block6_seed3102: waits=[0], planned=21504
+B02 completed group_block6_seed3103: waits=[0], planned=21504
+B02 completed group_block24_seed3101: waits=[0], planned=21504
+B02 completed group_block24_seed3102: waits=[0], planned=21504
+B02 completed group_block24_seed3103: waits=[0], planned=21504
+B02 completed delay10_seed3101: waits=[0, 5, 15], planned=21504
+B02 completed delay10_seed3102: waits=[0, 5, 15], planned=21504
+B02 completed delay10_seed3103: waits=[0, 5, 15], planned=21504
+B02 completed delay30_seed3101: waits=[0, 5, 15], planned=21504
+B02 completed delay30_seed3102: waits=[0, 5, 15], planned=21504
+B02 completed delay30_seed3103: waits=[0, 5, 15], planned=21504
+B02 completed random10_delay30_seed3101: waits=[0, 5, 15], planned=21504
+B02 completed random10_delay30_seed3102: waits=[0, 5, 15], planned=21504
+B02 completed random10_delay30_seed3103: waits=[0, 5, 15], planned=21504
+PASS B02 controlled replay; artifacts: artifacts\B02-20261102T114700Z-a0e807a3
+exit_code: 0

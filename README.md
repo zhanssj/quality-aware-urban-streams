@@ -4,6 +4,8 @@
 Реализованы T01 и блок B01 (T02 + T03): read-only loader, причинные признаки, три baseline,
 train-only preprocessing и общий оценщик validation. Статус и evidence: [STATUS.md](STATUS.md),
 [handoffs/B01.md](handoffs/B01.md). План: [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md).
+В B02 добавлены expected-plan проверка полноты CSV, общие loss calendars и virtual delivery/wait replay
+с frozen моделями B01. Метод и команды: [docs/B02_METHOD.md](docs/B02_METHOD.md), итог: [handoffs/B02.md](handoffs/B02.md).
 
 ## Установка
 
@@ -39,7 +41,8 @@ export AQ_DATA_ROOT="$PWD/airqualitybench_tools/data"
 Доступны `python -m aqstream ...` и установленная команда `aqstream ...`.
 `configs/baseline.yaml` — фиксированный bounded B01 pilot; запуск через `prepare` завершается ошибкой.
 Работают `train --config`, `evaluate --predictions --out`, `export-review --out`.
-Контракт и команды B01: [docs/B01_METHOD.md](docs/B01_METHOD.md). `replay` и `benchmark` пока отсутствуют.
+Работает `replay --config configs/b02_smoke.yaml` (затем `b02_pilot.yaml`). `benchmark` пока отсутствует.
+Новый evaluator требует независимый expected plan: `--plan` либо evaluation_plan.json рядом с CSV.
 
 ## Локальные проверки без сети и исходного датасета
 
@@ -71,4 +74,4 @@ CI запускает только эти проверки и CLI help; HDF5, cr
   результатом прогноза для статьи. См. [протокол](docs/EXPERIMENT_PROTOCOL.md).
 
 Работа ведётся в отдельных `codex/Txx-*` ветках. `main` обновляется после независимого ревью владельцем.
-Материалы текущего блока для ChatGPT Pro: [handoffs/B01.md](handoffs/B01.md).
+Материалы текущего блока для ChatGPT Pro: [handoffs/B02.md](handoffs/B02.md).

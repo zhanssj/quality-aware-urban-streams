@@ -6,11 +6,14 @@ import math
 from pathlib import Path
 
 from aqstream.data import DataContractError
+from aqstream.prediction_plan import PredictionPlan
 
 MODEL_NAMES = ("persistence", "standard", "quality_aware")
 
 
-def evaluate_predictions(path: Path) -> dict:
+def evaluate_predictions(path: Path, *, plan: PredictionPlan | None = None) -> dict:
+    if plan is None:
+        plan = PredictionPlan.load(path.parent / "evaluation_plan.json")
     scheduled = eligible = common_scored = 0
     predicted = dict.fromkeys(MODEL_NAMES, 0)
     absolute = dict.fromkeys(MODEL_NAMES, 0.0)
@@ -26,6 +29,10 @@ def evaluate_predictions(path: Path) -> dict:
             "origin_index",
             "target_index",
             "target_year",
+            "target_local_index",
+            "run_id",
+            "scenario_id",
+            "wait_minutes",
             "split",
             "source_valid",
             "target",
@@ -34,6 +41,7 @@ def evaluate_predictions(path: Path) -> dict:
         if not required.issubset(reader.fieldnames or []):
             raise DataContractError(f"Missing prediction columns in {path}")
         for row in reader:
+            plan.validate_row(row)
             key = row["sample_id"]
             if key in seen:
                 raise DataContractError(f"Duplicate prediction sample ID: {key}")
@@ -75,6 +83,10 @@ def evaluate_predictions(path: Path) -> dict:
                 absolute[name] += abs(error)
                 squared[name] += error * error
                 station["absolute"][name] += abs(error)
+    if scheduled != plan.expected_count:
+        raise DataContractError(
+            f"Incomplete expected schedule: {scheduled} present, {plan.expected_count} planned"
+        )
     metrics = {}
     for name in MODEL_NAMES:
         mae = absolute[name] / common_scored if common_scored else None
@@ -106,5 +118,14 @@ def evaluate_predictions(path: Path) -> dict:
         "units": "file_units",
         "interpretation": "diagnostic_only",
         "target_policy": "source-valid shared intersection",
+        "schedule_validated": True,
+        "planned": plan.expected_count,
+        "present_rows": scheduled,
+        "expected_plan_sha256": plan.fingerprint,
+        "context": {
+            "run_id": plan.run_id,
+            "scenario_id": plan.scenario_id,
+            "wait_minutes": plan.wait_minutes,
+        },
         "models": metrics,
     }

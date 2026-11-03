@@ -1,0 +1,275 @@
+{
+  "task_id": "B02",
+  "code_commit": "f500c01d6f64311bba743c61fdb86a6715758c23",
+  "base_main": "ea9205c47832a27f0331b6fe0f0eda405eeef6be",
+  "dirty_tree_at_start": false,
+  "started_at_utc": "2026-11-02T11:44:46.775973+00:00",
+  "checks": [
+    {
+      "check": "N1_gate",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "tests/test_prediction_plan.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "N1_gate.txt"
+    },
+    {
+      "check": "T04_gate",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "tests/test_calendars.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "T04_gate.txt"
+    },
+    {
+      "check": "T05_gate",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "tests/test_delivery.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "T05_gate.txt"
+    },
+    {
+      "check": "synthetic_e2e",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "tests/test_replay_runner.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "synthetic_e2e.txt"
+    },
+    {
+      "check": "pytest",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "pytest.txt"
+    },
+    {
+      "check": "ruff_check",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "src",
+        "tests"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "ruff_check.txt"
+    },
+    {
+      "check": "ruff_format",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "src",
+        "tests"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "ruff_format.txt"
+    },
+    {
+      "check": "real_smoke",
+      "command": [
+        "python",
+        "-m",
+        "aqstream",
+        "replay",
+        "--config",
+        "configs/b02_smoke.yaml"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "smoke.txt",
+      "run_id": "B02-20261102T114608Z-7d38a7c8"
+    },
+    {
+      "check": "real_pilot",
+      "command": [
+        "python",
+        "-m",
+        "aqstream",
+        "replay",
+        "--config",
+        "configs/b02_pilot.yaml"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "pilot.txt",
+      "run_id": "B02-20261102T114700Z-a0e807a3"
+    },
+    {
+      "check": "recompute_same_csv",
+      "command": [
+        "python",
+        "-m",
+        "aqstream",
+        "evaluate",
+        "--predictions",
+        "artifacts\\B02-20261102T114700Z-a0e807a3\\cases\\delay30_seed3101_wait15\\predictions.csv",
+        "--plan",
+        "artifacts\\B02-20261102T114700Z-a0e807a3\\cases\\delay30_seed3101_wait15\\evaluation_plan.json",
+        "--out",
+        "artifacts/B02-verification/recomputed_case.json"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "exact_json_equality": true
+    },
+    {
+      "check": "artifact_integrity",
+      "command": [
+        "python",
+        "artifacts/B02-verification/verify_integrity.py"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "verification.json:artifact_integrity"
+    },
+    {
+      "check": "export_review",
+      "command": [
+        "airqualitybench_tools/.venv/Scripts/python.exe",
+        "-m",
+        "aqstream",
+        "export-review",
+        "--out",
+        "exports/B02-review.zip"
+      ],
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "check": "verify_review_bundle",
+      "command": [
+        "stdlib-python",
+        "artifacts/B02-verification/verify_review_bundle.py"
+      ],
+      "exit_code": 0,
+      "status": "PASS"
+    }
+  ],
+  "finished_synthetic_at_utc": "2026-11-02T11:44:59.784944+00:00",
+  "full_synthetic_result": "158 passed, 1 skipped (Windows longdouble)",
+  "training_mode": "frozen_clean_B01; real refit NOT_RUN",
+  "artifact_integrity": {
+    "status": "PASS",
+    "exit_code": 0,
+    "checked_at_utc": "2026-11-03T05:47:02.008614+00:00",
+    "inventories": {
+      "B01-20261102T095148Z-df565b77": {
+        "files": 10,
+        "bytes": 66282616,
+        "manifest_sha256": "ae9735526dd15d9cd3a94e442270b0d77f4cd4aec3c677241fb5c66c6c51d484"
+      },
+      "B02-20261102T114608Z-7d38a7c8": {
+        "files": 60,
+        "bytes": 8942886,
+        "manifest_sha256": "c3ebbbd7be08848e69e1cb12da0a9cb1d5353c49ba67247182a1a214ef0aeeb2"
+      },
+      "B02-20261102T114700Z-a0e807a3": {
+        "files": 365,
+        "bytes": 288168776,
+        "manifest_sha256": "6b108f123987c88fb8b6558a30ef207bef1b479238ef855e3e371509a6bdff57"
+      }
+    },
+    "checks": [
+      "all inventoried output sizes and SHA256",
+      "original B01 manifest and every original artifact unchanged",
+      "copied report JSON byte parity",
+      "51 cases share scored IDs and independent validated plans",
+      "full zero-control prediction parity",
+      "original B01 numerical metrics unchanged",
+      "separate CLI metrics JSON equality",
+      "unchanged dependency lock",
+      "source-read inventory excludes 2025"
+    ]
+  },
+  "review_bundle_validation": {
+    "status": "PASS",
+    "exit_code": 0,
+    "checked_at_utc": "2026-11-03T05:51:10.999966+00:00",
+    "payload_files": 110,
+    "checks": [
+      "unique safe relative paths",
+      "internal SHA256 of every payload",
+      "payload equals current repository bytes",
+      "no raw data/models/predictions/secrets paths",
+      "source/docs/compact B02 evidence present"
+    ]
+  },
+  "report_tables": {
+    "status": "PASS",
+    "per_case_model_rows": 153,
+    "seed_aggregate_rows": 57,
+    "checks": "case errors/counts/calendar hashes and seed means equal pilot JSON",
+    "attempts": [
+      {
+        "status": "FAIL",
+        "exit_code": 1,
+        "reason": "local report verification script initially expected a case_id column; corrected to scenario_id + wait_minutes; no product source changes"
+      },
+      {
+        "status": "PASS",
+        "exit_code": 0
+      }
+    ]
+  },
+  "repository_checks": [
+    {
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "f500c01d6f64311bba743c61fdb86a6715758c23",
+        "--",
+        "src",
+        "tests",
+        "configs",
+        "pyproject.toml",
+        "requirements.lock.txt"
+      ],
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "status": "PASS"
+    }
+  ]
+}

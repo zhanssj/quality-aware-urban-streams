@@ -1,0 +1,13 @@
+{
+  "quality_mae_improvement_vs_standard_pct": 0.33147767202136,
+  "quality_mae_excess_vs_persistence_pct": 22.727628176760117,
+  "standard_mae_excess_vs_persistence_pct": 23.13579584625626,
+  "quality_rmse_excess_vs_standard_pct": 0.004628101104742283,
+  "quality_mae_absolute_reduction_vs_standard": 0.00632650572700566,
+  "validation_source_valid_fraction": 0.9353085154826958,
+  "scheduled_from_grid": 281088,
+  "scheduled_from_scored_plus_missing_truth": 281088,
+  "scheduled_training_subset": 105120,
+  "source": "reports/B01/validation_metrics.json and configs/baseline.yaml at bab6d90c0a6239e670ca80b458c12f00fdad5217",
+  "real_metrics_independently_recomputed_from_prediction_csv": false
+}

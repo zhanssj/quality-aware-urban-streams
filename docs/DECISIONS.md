@@ -1,5 +1,49 @@
 # Решения и открытые вопросы
 
+## 2026-11-02: B02 назначен владельцем
+
+- Объём B02: N1 (план sample IDs/run/scenario/wait), T04 (потери), T05 (доставка/ожидание).
+  Одна ветка, внутренние тесты между этапами, handoffs/B02.md и остановка. T06–T08/2025 закрыты.
+- База main ea9205c; перенесён docs commit с приёмкой B01. Baseline код/артефакты/гиперпараметры
+  и список 32 станций не изменяются. Только frozen clean-trained evaluation; augmented fit не запускается.
+- N1: обязательный expected plan (станции × target grid, run/scenario/wait), проверка каждого ID
+  и полного множества до PASS. CSV без плана не считается проверенным расписанием.
+- Доставка: interval_end=(event_index+1)*60; origin=target_index*60; cutoff=origin+wait;
+  target_end=(target_index+1)*60. Доступны только event_index<target и arrival<=cutoff,
+  interval_end<=origin. Wait 0/5/15, remaining lead 60/55/45 симуляционных минут.
+- Late события обновляют только будущие snapshots, last-known выбирается по event index.
+  Дубликаты по (station,event_index) идемпотентны; конфликт значения вызывает ошибку.
+- Нарушения применяются к source-valid inputs в [target_start-1,target_stop-1), truth независимо.
+  Более ранняя история clean и уже доставлена. Календарь общий для методов и waits, не per-window RNG.
+- Random drop: точное round(p*source_valid_count) по seeded permutation, p=5/10/20%.
+  Blocks: длительность 6/24 steps, один выбранный station или фиксированная группа ceil(25%*N),
+  один полный блок в каждом 168-step bucket с seeded start; natural missing не считаются new losses.
+- Delay: 10/30% недропнутых source-valid сообщений, round count без возвращения,
+  uniform integer 1–30 simulated minutes. Отдельные RNG streams для losses/blocks/delays.
+- Pilot: первые 672 validation steps (не календарные дни), seeds 3101/3102/3103,
+  модель/32-station cohort B01. Clean controls waits 0/5/15; losses без задержек wait=0;
+  delay и random10+delay30 — waits 0/5/15. До этого smoke 168 steps/один seed.
+- Дополнительно полный zero-loss/zero-delay контроль validation 2024, wait=0: сравнить
+  с исходным B01 CSV и метриками, tolerance 1e-10. Исходный B01 не перезаписывается.
+- Training mixture API: weighted calendar views с явными весами, независимые train seeds 2101/2102/2103;
+  augmented model training — NOT_RUN. До validation результатов не меняем конфигурацию.
+- Ограничения: 2 потока, HDF5 chunks 168, prediction batches 168 шагов, sampled RSS guard 2048 MiB.
+  В RAM только PM2.5 выбранных 32 станций за 2021–2024 (~10 MiB), без пяти лет/всей сети.
+  Seeded calendars и event traces локально; большие predictions/models не входят в Git/bundle.
+
+## 2026-11-02: внешняя приёмка и merge B01
+
+- Владелец подтвердил APPROVED для B01 (T02 + T03) и выполнил merge в main.
+  Main ea9205c47832a27f0331b6fe0f0eda405eeef6be имеет тот же полный tree, что reviewed bab6d90.
+- Решение и исходные свидетельства сохранены в reviews/B01.md и reviews/evidence/B01/.
+  APPROVED перенесён от внешнего проверяющего, не присвоен исполнителем самому себе.
+- N1 не блокирует B01. В начале отдельно назначенного B02 сверить фактические sample IDs
+  и run/scenario/wait с ожидаемым планом до итогового PASS; неполный/подменённый CSV не должен
+  выглядеть как полное расписание. Тесты: удаление/замена строки, дубликаты, смешение контекстов.
+- Текущий пилот, cohort и hyperparameters не переписываются. Недостаток evaluator не доказывает
+  потерю реальных predictions. Дополнительные scripts ревью архивированы, не исполнялись при переносе.
+- B02 не назначен текущим сообщением; модельные прогоны, T04/T05 и test-2025 не запускаются.
+
 ## 2026-11-02: B01 назначен владельцем
 
 - T01 принят внешним ChatGPT-ревью на daa0a04 (reviews/T01-R1.md), решение подтверждено владельцем.

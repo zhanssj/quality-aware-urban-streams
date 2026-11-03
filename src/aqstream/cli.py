@@ -159,18 +159,23 @@ def prepare(config_path: Path) -> Path:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Quality-aware sensor stream research core (B01)")
+    parser = argparse.ArgumentParser(description="Quality-aware sensor stream research core (B02)")
     subparsers = parser.add_subparsers(dest="command", required=True)
     smoke = subparsers.add_parser("prepare", help="read at most 168 train rows and 2–4 stations")
     smoke.add_argument("--config", required=True, type=Path)
     train = subparsers.add_parser("train", help="fixed bounded B01 train/validation experiment")
     train.add_argument("--config", required=True, type=Path)
+    replay = subparsers.add_parser(
+        "replay", help="frozen B01 losses/delivery/wait validation pilot"
+    )
+    replay.add_argument("--config", required=True, type=Path)
     evaluate = subparsers.add_parser("evaluate", help="recompute shared-target validation metrics")
     evaluate.add_argument("--predictions", required=True, type=Path)
     evaluate.add_argument("--out", required=True, type=Path)
+    evaluate.add_argument("--plan", type=Path, help="expected plan; default alongside predictions")
     evaluate.add_argument("--split", choices=["validation"], default="validation")
     export = subparsers.add_parser(
-        "export-review", help="export whitelisted B01 source/docs/evidence"
+        "export-review", help="export whitelisted source/docs/B01/B02 evidence"
     )
     export.add_argument("--out", required=True, type=Path)
     args = parser.parse_args(argv)
@@ -186,11 +191,17 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "evaluate":
             from aqstream.artifacts import write_json
             from aqstream.evaluation import evaluate_predictions
+            from aqstream.prediction_plan import PredictionPlan
 
-            metrics = evaluate_predictions(args.predictions)
+            plan = PredictionPlan.load(args.plan) if args.plan else None
+            metrics = evaluate_predictions(args.predictions, plan=plan)
             args.out.parent.mkdir(parents=True, exist_ok=True)
             write_json(args.out, metrics)
             print(f"PASS diagnostic validation metrics: {args.out}")
+        elif args.command == "replay":
+            from aqstream.replay.runner import run_replay
+
+            print(f"PASS B02 controlled replay; artifacts: {run_replay(args.config)}")
         elif args.command == "export-review":
             from aqstream.artifacts import export_review
 

@@ -1,0 +1,19 @@
+task_id: B02
+baseline_run: artifacts/B01-20261102T095148Z-df565b77
+baseline_manifest_sha256: ae9735526dd15d9cd3a94e442270b0d77f4cd4aec3c677241fb5c66c6c51d484
+validation_year: 2024
+validation_steps: 168
+validation_seeds: [3101]
+train_mixture_seeds: [2101]
+scenarios: [clean_source, random_drop10, group_block6, delay30]
+waits: [0, 5, 15]
+training_mixture_weights:
+  clean_source: 0.25
+  random_drop10: 0.25
+  group_block24: 0.25
+  delay30: 0.25
+full_zero_control: false
+chunk_size: 168
+batch_steps: 168
+threads: 2
+max_rss_mb: 2048

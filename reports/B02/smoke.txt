@@ -1,0 +1,10 @@
+code_commit: f500c01d6f64311bba743c61fdb86a6715758c23
+dirty_tree: false
+command: python -m aqstream replay --config configs/b02_smoke.yaml
+
+B02 completed clean_source_seed0: waits=[0, 5, 15], planned=5376
+B02 completed random_drop10_seed3101: waits=[0], planned=5376
+B02 completed group_block6_seed3101: waits=[0], planned=5376
+B02 completed delay30_seed3101: waits=[0, 5, 15], planned=5376
+PASS B02 controlled replay; artifacts: artifacts\B02-20261102T114608Z-7d38a7c8
+exit_code: 0
