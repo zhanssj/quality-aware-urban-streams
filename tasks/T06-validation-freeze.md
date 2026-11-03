@@ -1,6 +1,8 @@
 # T06: Матрица validation, ablation, benchmark и freeze
 
-Статус: IN_PROGRESS, назначено владельцем после приёмки и merge B02 2026-11-03.
+Статус: READY_FOR_REVIEW, 2026-11-03. Назначено владельцем после приёмки и merge B02.
+Code commit: fca85909241ac7efd3546db00cf1a79f96b5dcd2.
+Evidence, результаты и ограничения: [handoffs/T06.md](../handoffs/T06.md).
 
 Предусловия: T05 принят.
 

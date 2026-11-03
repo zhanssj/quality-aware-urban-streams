@@ -86,6 +86,15 @@ predict, запись локального NPZ; исключает исходн�
 Simulated wait/delay не прибавляются к реально измеренным секундам. Нет real-time sleep,
 копий станций, обещаний публикации в deadline или end-to-end broker latency.
 
+Наблюдаемые границы timers: поле cli_wall_seconds внутри benchmark.json начинается при входе
+в функцию runner, исключает старт Python/argparse и окончательную запись этого JSON.
+Отдельный внешний таймер subprocess в reports/T06/verification.json включает весь процесс CLI.
+Основное benchmark evidence — первый отдельный CLI benchmark после validation; встроенный
+benchmark полного run сохраняется отдельно, без выбора более выгодного набора repeats.
+P50/P95 оценены по7 измерениям, не являются SLA. Paired CI — pointwise, без поправки на
+множественные comparisons. Pilot и final имеют разные scopes/calendars; seed без scope/hash
+не определяет одну и ту же маску на их пересечении.
+
 ## Единицы и время
 
 Локальная dataset card pinned revision bbdcdd257bc7aed69598d423ca034d03f7ce015e описывает hourly

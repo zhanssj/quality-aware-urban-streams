@@ -1,0 +1,310 @@
+{
+  "task_id": "T06",
+  "code_commit": "fca85909241ac7efd3546db00cf1a79f96b5dcd2",
+  "base_main": "fb17f92a8b2c45b4ce909e7995fa33da95f44c43",
+  "dirty_tree_at_start": false,
+  "started_at_utc": "2026-11-03T06:47:27.150009+00:00",
+  "disk_free_bytes": 282686496768,
+  "checks": [
+    {
+      "check": "N2_gate",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "tests/test_calendars.py",
+        "tests/test_b02_review_checks.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "N2_gate.txt"
+    },
+    {
+      "check": "synthetic_e2e",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "tests/test_validation.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "synthetic_e2e.txt"
+    },
+    {
+      "check": "pytest",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "pytest.txt"
+    },
+    {
+      "check": "ruff_check",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "src",
+        "tests"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "ruff_check.txt"
+    },
+    {
+      "check": "ruff_format",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "src",
+        "tests"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "ruff_format.txt"
+    },
+    {
+      "check": "cli_help",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "aqstream",
+        "--help"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "verification.json#cli_help",
+      "log_inline": "code_commit: fca85909241ac7efd3546db00cf1a79f96b5dcd2\ndirty_tree: false\ncommand: ['C:\\\\Users\\\\zhanssj\\\\IdeaProjects\\\\masters\\\\quality-aware-urban-streams\\\\airqualitybench_tools\\\\.venv\\\\Scripts\\\\python.exe', '-m', 'aqstream', '--help']\nexit_code: 0\n\nusage: python.exe -m aqstream [-h]\n                              {prepare,train,replay,validate,evaluate-tensor,benchmark,evaluate,export-review} ...\n\nQuality-aware sensor stream research core (T06)\n\npositional arguments:\n  {prepare,train,replay,validate,evaluate-tensor,benchmark,evaluate,export-review}\n    prepare             read at most 168 train rows and 2\u20134 stations\n    train               fixed bounded B01 train/validation experiment\n    replay              frozen B01 losses/delivery/wait validation pilot\n    validate            T06 train-only regimes and validation matrix\n    evaluate-tensor     recompute complete planned T06 NPZ metrics\n    benchmark           warmup/repeated frozen T06 compute jobs\n    evaluate            recompute shared-target validation metrics\n    export-review       export whitelisted source/docs/compact experiment\n                        evidence\n\noptions:\n  -h, --help            show this help message and exit\n"
+    },
+    {
+      "check": "real_validation",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "aqstream",
+        "validate",
+        "--config",
+        "configs/t06.yaml"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "real_validation.txt",
+      "started_at_utc": "2026-11-03T06:48:24.980337+00:00",
+      "finished_at_utc": "2026-11-03T06:59:58.465228+00:00"
+    },
+    {
+      "check": "recompute_tensor",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "aqstream",
+        "evaluate-tensor",
+        "--predictions",
+        "artifacts\\T06-20261103T064826Z-e9a79599\\final_cases\\random10_delay30_seed4101_wait15\\predictions.npz",
+        "--truth",
+        "artifacts\\T06-20261103T064826Z-e9a79599\\truth.npz",
+        "--config",
+        "configs/t06.yaml",
+        "--out",
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\artifacts\\T06-verification\\recomputed_case.json"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "verification.json#recompute_tensor",
+      "external_subprocess_wall_seconds": 2.5809344998560846,
+      "log_inline": "code_commit: fca85909241ac7efd3546db00cf1a79f96b5dcd2\ncommand: ['C:\\\\Users\\\\zhanssj\\\\IdeaProjects\\\\masters\\\\quality-aware-urban-streams\\\\airqualitybench_tools\\\\.venv\\\\Scripts\\\\python.exe', '-m', 'aqstream', 'evaluate-tensor', '--predictions', 'artifacts\\\\T06-20261103T064826Z-e9a79599\\\\final_cases\\\\random10_delay30_seed4101_wait15\\\\predictions.npz', '--truth', 'artifacts\\\\T06-20261103T064826Z-e9a79599\\\\truth.npz', '--config', 'configs/t06.yaml', '--out', 'C:\\\\Users\\\\zhanssj\\\\IdeaProjects\\\\masters\\\\quality-aware-urban-streams\\\\artifacts\\\\T06-verification\\\\recomputed_case.json']\nexit_code: 0\nexternal_subprocess_wall_seconds: 2.5809344998560846\n\nPASS planned T06 tensor metrics: C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\artifacts\\T06-verification\\recomputed_case.json\n"
+    },
+    {
+      "check": "standalone_benchmark",
+      "command": [
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe",
+        "-m",
+        "aqstream",
+        "benchmark",
+        "--run",
+        "artifacts\\T06-20261103T064826Z-e9a79599",
+        "--manifest-sha256",
+        "0dd7dfe5e4e385560b5979d10e8eee9e1c77b21b35f6e04d5a766e53a7cf48a4",
+        "--out",
+        "C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\artifacts\\T06-benchmark-e9a79599"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "verification.json#standalone_benchmark",
+      "external_subprocess_wall_seconds": 5.336890200152993,
+      "log_inline": "code_commit: fca85909241ac7efd3546db00cf1a79f96b5dcd2\ncommand: ['C:\\\\Users\\\\zhanssj\\\\IdeaProjects\\\\masters\\\\quality-aware-urban-streams\\\\airqualitybench_tools\\\\.venv\\\\Scripts\\\\python.exe', '-m', 'aqstream', 'benchmark', '--run', 'artifacts\\\\T06-20261103T064826Z-e9a79599', '--manifest-sha256', '0dd7dfe5e4e385560b5979d10e8eee9e1c77b21b35f6e04d5a766e53a7cf48a4', '--out', 'C:\\\\Users\\\\zhanssj\\\\IdeaProjects\\\\masters\\\\quality-aware-urban-streams\\\\artifacts\\\\T06-benchmark-e9a79599']\nexit_code: 0\nexternal_subprocess_wall_seconds: 5.336890200152993\n\nPASS T06 benchmark; artifacts: C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\artifacts\\T06-benchmark-e9a79599\n"
+    },
+    {
+      "check": "export_review",
+      "command": [
+        "airqualitybench_tools/.venv/Scripts/python.exe",
+        "-m",
+        "aqstream",
+        "export-review",
+        "--out",
+        "exports/T06-review.zip"
+      ],
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "check": "verify_bundle",
+      "command": [
+        "stdlib-python",
+        "artifacts/T06-verification/verify_bundle.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0
+    }
+  ],
+  "status": "PASS",
+  "finished_at_utc": "2026-11-03T06:48:01.054367+00:00",
+  "real_run_status": "PASS",
+  "tensor_recompute_exact_equality": true,
+  "standalone_benchmark_output": "artifacts/T06-benchmark-e9a79599",
+  "artifact_integrity": {
+    "status": "PASS",
+    "exit_code": 0,
+    "checked_at_utc": "2026-11-03T07:01:25.539830+00:00",
+    "inventories": {
+      "B01-20261102T095148Z-df565b77": {
+        "files": 10,
+        "bytes": 66282616,
+        "manifest_sha256": "ae9735526dd15d9cd3a94e442270b0d77f4cd4aec3c677241fb5c66c6c51d484"
+      },
+      "B02-20261102T114700Z-a0e807a3": {
+        "files": 365,
+        "bytes": 288168776,
+        "manifest_sha256": "6b108f123987c88fb8b6558a30ef207bef1b479238ef855e3e371509a6bdff57"
+      },
+      "T06-20261103T064826Z-e9a79599": {
+        "files": 839,
+        "bytes": 1589558481,
+        "manifest_sha256": "0dd7dfe5e4e385560b5979d10e8eee9e1c77b21b35f6e04d5a766e53a7cf48a4"
+      }
+    },
+    "original_B01_B02_preserved": true,
+    "HDF5_rehashed": false
+  },
+  "report_tables": {
+    "status": "PASS",
+    "matrix_rows": 996,
+    "pilot_rows": 612,
+    "slice_rows": 2988,
+    "paired_rows": 1328,
+    "provenance": "derived directly from corresponding per-case JSON; all models/regimes retained"
+  },
+  "run_id": "T06-20261103T064826Z-e9a79599",
+  "standalone_benchmark_inventory": {
+    "benchmark.json": {
+      "sha256": "9044c3cf88a3199fba63a391c25e1aae6bd77c19890172e27aa5b182ca341689",
+      "bytes": 23784
+    },
+    "repeat_0.npz": {
+      "sha256": "62da865e7049f8a68c729590efb96d13fb69d7a7d2f929726a7c4f3994436e7f",
+      "bytes": 353179
+    },
+    "repeat_1.npz": {
+      "sha256": "62da865e7049f8a68c729590efb96d13fb69d7a7d2f929726a7c4f3994436e7f",
+      "bytes": 353179
+    },
+    "repeat_2.npz": {
+      "sha256": "62da865e7049f8a68c729590efb96d13fb69d7a7d2f929726a7c4f3994436e7f",
+      "bytes": 353179
+    },
+    "repeat_3.npz": {
+      "sha256": "62da865e7049f8a68c729590efb96d13fb69d7a7d2f929726a7c4f3994436e7f",
+      "bytes": 353179
+    },
+    "repeat_4.npz": {
+      "sha256": "62da865e7049f8a68c729590efb96d13fb69d7a7d2f929726a7c4f3994436e7f",
+      "bytes": 353179
+    },
+    "repeat_5.npz": {
+      "sha256": "62da865e7049f8a68c729590efb96d13fb69d7a7d2f929726a7c4f3994436e7f",
+      "bytes": 353179
+    },
+    "repeat_6.npz": {
+      "sha256": "62da865e7049f8a68c729590efb96d13fb69d7a7d2f929726a7c4f3994436e7f",
+      "bytes": 353179
+    },
+    "repeat_7.npz": {
+      "sha256": "62da865e7049f8a68c729590efb96d13fb69d7a7d2f929726a7c4f3994436e7f",
+      "bytes": 353179
+    },
+    "repeat_8.npz": {
+      "sha256": "62da865e7049f8a68c729590efb96d13fb69d7a7d2f929726a7c4f3994436e7f",
+      "bytes": 353179
+    }
+  },
+  "clean_wait_prediction_parity": {
+    "status": "PASS",
+    "phases": [
+      "pilot",
+      "final"
+    ],
+    "waits": [
+      0,
+      5,
+      15
+    ],
+    "all_12_regime_methods": true,
+    "comparison": "exact predictions.npy bytes"
+  },
+  "repository_checks": [
+    {
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "fca85909241ac7efd3546db00cf1a79f96b5dcd2",
+        "--",
+        "src",
+        "tests",
+        "configs",
+        "pyproject.toml",
+        "requirements.lock.txt"
+      ],
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "status": "PASS",
+      "exit_code": 0
+    }
+  ],
+  "freeze_sha256": "864a0dccbda834507ea0fc0625039ee64f4f23bd50cc5d804cf36758295ee358",
+  "review_import_rechecked_files": 26,
+  "protocol_source_hashes_verified": true,
+  "full_synthetic_result": "209 passed, 1 skipped (Windows longdouble)",
+  "new_remote_CI": "NOT_OBSERVED",
+  "review_bundle_validation": {
+    "status": "PASS",
+    "exit_code": 0,
+    "checked_at_utc": "2026-11-03T07:12:54.419311+00:00",
+    "payload_files": 143,
+    "checks": [
+      "exact internal SHA256",
+      "safe unique paths",
+      "current repository bytes",
+      "source/docs/review/freeze/complete compact evidence present",
+      "no raw data/models/NPZ/secrets paths"
+    ]
+  }
+}

@@ -1,8 +1,8 @@
 # Статус
 
-Состояние проекта: B02 APPROVED внешне; T06 IN_PROGRESS, назначено владельцем 2026-11-03.
+Состояние проекта: T06 READY_FOR_REVIEW, 2026-11-03. B01/B02 APPROVED внешне.
 Новый полный аудит: не назначен и не нужен.
-Текущая задача: T06 (включая N2 до augmented fit). B01/B02 сохранены.
+Текущая задача T06 завершена (включая N2); ожидается внешнее ревью. B01/B02 сохранены.
 Remote repository: https://github.com/zhanssj/quality-aware-urban-streams.git.
 Main подтянут до fb17f92a8b2c45b4ce909e7995fa33da95f44c43; tree совпал с reviewed B02 HEAD a785242.
 Рабочая ветка: codex/T06-validation-freeze.
@@ -19,7 +19,7 @@ Time semantics of published HDF5: UNVERIFIED; development convention documented.
 | T03 | APPROVED внешне в B01 | 0a70134e32d86c5216e6f42e9647adb780756c64 | handoffs/B01.md | reviews/B01.md |
 | T04 | APPROVED внешне в B02 | f500c01d6f64311bba743c61fdb86a6715758c23 | handoffs/B02.md | reviews/B02.md |
 | T05 | APPROVED внешне в B02 | f500c01d6f64311bba743c61fdb86a6715758c23 | handoffs/B02.md | reviews/B02.md |
-| T06 | IN_PROGRESS | - | handoffs/T06.md | в конце задачи |
+| T06 | READY_FOR_REVIEW | fca85909241ac7efd3546db00cf1a79f96b5dcd2 | handoffs/T06.md | ожидается внешнее |
 | T07 | TODO | - | - | - |
 | T08 | DEFERRED_OPTIONAL | - | - | - |
 
@@ -28,6 +28,29 @@ BLOCKED допустим с конкретной причиной и выпол�
 Codex не ставит APPROVED сам. Следующая задача запускается по отдельному указанию владельца.
 Владелец после приёмки/merge B02 назначил продолжение: текущая задача T06.
 После handoffs/T06.md остановиться. T07/T08 и test-2025 не назначены.
+
+## T06, передача 2026-11-03
+
+Code commit fca8590, чистая рабочая копия при final checks и real run.
+PASS: N2/reviewer gate37 tests; T06 synthetic e2e22 tests; full209passed +1Windows longdouble skip;
+ruff check/format (44 files), CLI help. Логи/exit codes: reports/T06/verification.json.
+Real run T06-20261103T064826Z-e9a79599: 51 pilot и83 final policy cases, два training regimes,
+Persistence и5 HGB-вариантов в каждом. Final охватывает все8784 позиции validation2024 ×32 станции.
+В каждом case/method:281088 scheduled/predicted,262904 scored,18184 missing truth,coverage100%.
+Zero-control:281088 predictions на метод точно равны B01, включая строки без target; max difference0.
+Augmented обучен отдельно:623380 view rows, total weight62338.00000000001, те же62338 labels;
+все8 новых fits завершены до numeric validation read. Исторические модели не перезаписывались.
+Заранее объявленный selection score выбрал clean:1.9545503845820584 против augmented1.9738044610210708.
+Balanced mean MAE: Persistence1.627872, Standard1.957594, fullQA1.951507 (clean).
+Это diagnostic/file_units, не физический результат статьи. Парные pointwise CI и ablations сохранены.
+Отдельный benchmark:2 warmups +7 repeats,5376 positions/job,median167.465ms,p95177.377ms,
+median32102.249 observations/s; scope исключает исходное чтение/fit/scoring. Не real-time SLA.
+Full run sampled peakRSS463847424 bytes, workload689.031732s; exact timing scopes в handoff.
+Повторный CLI evaluate-tensor дал точный JSON; hashes всех839 T06 outputs (1589558481 bytes),
+всех10 B01 и365 B02 outputs проверены. Все оригинальные B01/B02 файлы неизменны.
+protocol_freeze.json создан: selected clean, primary Persistence/Standard/QA, scenario/seeds/model/config/
+source/cohort/lock hashes, test_gate=CLOSED, owner_test_authorization=null, units_verified=false.
+T07/HDF5 2025 и T08 NOT_RUN. Новый remote CI/Linux не наблюдался. После handoff работа остановлена.
 
 ## Внешняя приёмка B02 и назначение T06, 2026-11-03
 
@@ -43,7 +66,7 @@ N2 неблокирующее: fingerprint вычисляется один ра�
 полная validation2024, 5 seeds, отдельные training regimes, ablations, bootstrap/benchmark/freeze.
 2025 CLOSED, физические ограничения сохранены; новый полный аудит не назначен.
 
-## B02, передача 2026-11-03
+## B02, передача 2026-11-03 (история до T06)
 
 PASS на code commit f500c01, чистая рабочая копия при проверках/прогонах 2026-11-02:
 N1 gate 15 passed; T04 gate 8 passed; T05 gate 9 passed; replay synthetic end-to-end 7 passed;

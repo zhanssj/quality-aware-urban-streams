@@ -9,6 +9,7 @@ src/aqstream/
   data/             # HDF5 read-only, сетка, IDs, source validity
   features/         # причинная история, общие и quality features
   replay/           # virtual clock, drops, delivery, scheduled forecasts
+  validation/       # T06 regimes/ablations, NPZ evaluation, bootstrap, benchmark, freeze
   models/           # persistence, standard, quality, model manifest
   evaluation/       # truth lookup, metrics, paired analysis
   artifacts/        # run manifests, hashes, report exports
@@ -46,8 +47,11 @@ python -m aqstream replay --config configs/b02_pilot.yaml
 ```
 
 Не создавать интерфейс-команды, которые печатают успех без реализации. Не реализованная команда должна отсутствовать либо завершаться явной ошибкой.
-Benchmark пока не реализован. Оценщик проверяет expected plan (явный --plan или файл рядом с CSV).
-Точные имена можно уточнить в T01, обновив документы и handoff.
+T06 реализует `validate --config`, `evaluate-tensor --predictions --truth --config --out` и
+`benchmark --run --manifest-sha256 --out`. Команды и границы timers: docs/T06_METHOD.md.
+Оценщик CSV проверяет expected plan (явный --plan или файл рядом с CSV). NPZ хранит полный
+Cartesian tensor с exact indices/cohort/model order/context относительно отдельного plan.
+Большие NPZ остаются локально в artifacts/, summary tables и protocol_freeze.json — в Git.
 
 ## Запись прогноза
 

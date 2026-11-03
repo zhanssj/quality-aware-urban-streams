@@ -1,0 +1,6 @@
+code_commit: fca85909241ac7efd3546db00cf1a79f96b5dcd2
+dirty_tree: false
+command: ['C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe', '-m', 'ruff', 'check', 'src', 'tests']
+exit_code: 0
+
+All checks passed!

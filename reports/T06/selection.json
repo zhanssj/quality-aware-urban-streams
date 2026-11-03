@@ -1,0 +1,8 @@
+{
+  "selected_regime": "clean",
+  "scores": {
+    "clean": 1.9545503845820584,
+    "augmented": 1.9738044610210708
+  },
+  "rule": "equal scenario mean of seed/wait mean MAE of Standard and full quality; tie clean"
+}

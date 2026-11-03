@@ -1,0 +1,101 @@
+code_commit: fca85909241ac7efd3546db00cf1a79f96b5dcd2
+dirty_tree: false
+command: ['C:\\Users\\zhanssj\\IdeaProjects\\masters\\quality-aware-urban-streams\\airqualitybench_tools\\.venv\\Scripts\\python.exe', '-m', 'aqstream', 'validate', '--config', 'configs/t06.yaml']
+started_at_utc: 2026-11-03T06:48:24.980337+00:00
+
+T06 train features: seed 2101, 249352/623380 rows
+T06 train features: seed 2102, 436366/623380 rows
+T06 train features: seed 2103, 623380/623380 rows
+T06 fit clean/masks: 0.253s
+T06 fit clean/age: 0.191s
+T06 fit clean/native_missing: 0.222s
+T06 fit augmented/standard: 1.669s
+T06 fit augmented/masks: 2.630s
+T06 fit augmented/age: 1.605s
+T06 fit augmented/quality_aware: 2.693s
+T06 fit augmented/native_missing: 1.701s
+T06 pilot clean_source_seed0: 3 policies, 21504 samples each
+T06 pilot random_drop05_seed4101: 1 policies, 21504 samples each
+T06 pilot random_drop05_seed4102: 1 policies, 21504 samples each
+T06 pilot random_drop05_seed4103: 1 policies, 21504 samples each
+T06 pilot random_drop10_seed4101: 1 policies, 21504 samples each
+T06 pilot random_drop10_seed4102: 1 policies, 21504 samples each
+T06 pilot random_drop10_seed4103: 1 policies, 21504 samples each
+T06 pilot random_drop20_seed4101: 1 policies, 21504 samples each
+T06 pilot random_drop20_seed4102: 1 policies, 21504 samples each
+T06 pilot random_drop20_seed4103: 1 policies, 21504 samples each
+T06 pilot single_block6_seed4101: 1 policies, 21504 samples each
+T06 pilot single_block6_seed4102: 1 policies, 21504 samples each
+T06 pilot single_block6_seed4103: 1 policies, 21504 samples each
+T06 pilot single_block24_seed4101: 1 policies, 21504 samples each
+T06 pilot single_block24_seed4102: 1 policies, 21504 samples each
+T06 pilot single_block24_seed4103: 1 policies, 21504 samples each
+T06 pilot group_block6_seed4101: 1 policies, 21504 samples each
+T06 pilot group_block6_seed4102: 1 policies, 21504 samples each
+T06 pilot group_block6_seed4103: 1 policies, 21504 samples each
+T06 pilot group_block24_seed4101: 1 policies, 21504 samples each
+T06 pilot group_block24_seed4102: 1 policies, 21504 samples each
+T06 pilot group_block24_seed4103: 1 policies, 21504 samples each
+T06 pilot delay10_seed4101: 3 policies, 21504 samples each
+T06 pilot delay10_seed4102: 3 policies, 21504 samples each
+T06 pilot delay10_seed4103: 3 policies, 21504 samples each
+T06 pilot delay30_seed4101: 3 policies, 21504 samples each
+T06 pilot delay30_seed4102: 3 policies, 21504 samples each
+T06 pilot delay30_seed4103: 3 policies, 21504 samples each
+T06 pilot random10_delay30_seed4101: 3 policies, 21504 samples each
+T06 pilot random10_delay30_seed4102: 3 policies, 21504 samples each
+T06 pilot random10_delay30_seed4103: 3 policies, 21504 samples each
+T06 final clean_source_seed0: 3 policies, 281088 samples each
+T06 final random_drop05_seed4101: 1 policies, 281088 samples each
+T06 final random_drop05_seed4102: 1 policies, 281088 samples each
+T06 final random_drop05_seed4103: 1 policies, 281088 samples each
+T06 final random_drop05_seed4104: 1 policies, 281088 samples each
+T06 final random_drop05_seed4105: 1 policies, 281088 samples each
+T06 final random_drop10_seed4101: 1 policies, 281088 samples each
+T06 final random_drop10_seed4102: 1 policies, 281088 samples each
+T06 final random_drop10_seed4103: 1 policies, 281088 samples each
+T06 final random_drop10_seed4104: 1 policies, 281088 samples each
+T06 final random_drop10_seed4105: 1 policies, 281088 samples each
+T06 final random_drop20_seed4101: 1 policies, 281088 samples each
+T06 final random_drop20_seed4102: 1 policies, 281088 samples each
+T06 final random_drop20_seed4103: 1 policies, 281088 samples each
+T06 final random_drop20_seed4104: 1 policies, 281088 samples each
+T06 final random_drop20_seed4105: 1 policies, 281088 samples each
+T06 final single_block6_seed4101: 1 policies, 281088 samples each
+T06 final single_block6_seed4102: 1 policies, 281088 samples each
+T06 final single_block6_seed4103: 1 policies, 281088 samples each
+T06 final single_block6_seed4104: 1 policies, 281088 samples each
+T06 final single_block6_seed4105: 1 policies, 281088 samples each
+T06 final single_block24_seed4101: 1 policies, 281088 samples each
+T06 final single_block24_seed4102: 1 policies, 281088 samples each
+T06 final single_block24_seed4103: 1 policies, 281088 samples each
+T06 final single_block24_seed4104: 1 policies, 281088 samples each
+T06 final single_block24_seed4105: 1 policies, 281088 samples each
+T06 final group_block6_seed4101: 1 policies, 281088 samples each
+T06 final group_block6_seed4102: 1 policies, 281088 samples each
+T06 final group_block6_seed4103: 1 policies, 281088 samples each
+T06 final group_block6_seed4104: 1 policies, 281088 samples each
+T06 final group_block6_seed4105: 1 policies, 281088 samples each
+T06 final group_block24_seed4101: 1 policies, 281088 samples each
+T06 final group_block24_seed4102: 1 policies, 281088 samples each
+T06 final group_block24_seed4103: 1 policies, 281088 samples each
+T06 final group_block24_seed4104: 1 policies, 281088 samples each
+T06 final group_block24_seed4105: 1 policies, 281088 samples each
+T06 final delay10_seed4101: 3 policies, 281088 samples each
+T06 final delay10_seed4102: 3 policies, 281088 samples each
+T06 final delay10_seed4103: 3 policies, 281088 samples each
+T06 final delay10_seed4104: 3 policies, 281088 samples each
+T06 final delay10_seed4105: 3 policies, 281088 samples each
+T06 final delay30_seed4101: 3 policies, 281088 samples each
+T06 final delay30_seed4102: 3 policies, 281088 samples each
+T06 final delay30_seed4103: 3 policies, 281088 samples each
+T06 final delay30_seed4104: 3 policies, 281088 samples each
+T06 final delay30_seed4105: 3 policies, 281088 samples each
+T06 final random10_delay30_seed4101: 3 policies, 281088 samples each
+T06 final random10_delay30_seed4102: 3 policies, 281088 samples each
+T06 final random10_delay30_seed4103: 3 policies, 281088 samples each
+T06 final random10_delay30_seed4104: 3 policies, 281088 samples each
+T06 final random10_delay30_seed4105: 3 policies, 281088 samples each
+PASS T06 validation; artifacts: artifacts\T06-20261103T064826Z-e9a79599
+
+exit_code: 0

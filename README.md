@@ -41,7 +41,7 @@ export AQ_DATA_ROOT="$PWD/airqualitybench_tools/data"
 Доступны `python -m aqstream ...` и установленная команда `aqstream ...`.
 `configs/baseline.yaml` — фиксированный bounded B01 pilot; запуск через `prepare` завершается ошибкой.
 Работают `train --config`, `evaluate --predictions --out`, `export-review --out`.
-Работает `replay --config configs/b02_smoke.yaml` (затем `b02_pilot.yaml`). `benchmark` пока отсутствует.
+Работает `replay --config configs/b02_smoke.yaml` (затем `b02_pilot.yaml`). Команды T06 приведены ниже.
 Новый evaluator требует независимый expected plan: `--plan` либо evaluation_plan.json рядом с CSV.
 
 T06: `validate --config configs/t06.yaml` обучает отдельные ablation/augmented модели только на
@@ -83,4 +83,6 @@ CI запускает только эти проверки и CLI help; HDF5, cr
   результатом прогноза для статьи. См. [протокол](docs/EXPERIMENT_PROTOCOL.md).
 
 Работа ведётся в отдельных `codex/Txx-*` ветках. `main` обновляется после независимого ревью владельцем.
-Материалы текущего блока для ChatGPT Pro: [handoffs/B02.md](handoffs/B02.md).
+Материалы текущей задачи для ChatGPT Pro: [handoffs/T06.md](handoffs/T06.md).
+T06 READY_FOR_REVIEW: полная validation matrix, clean/augmented, ablations, benchmark и
+[diagnostic freeze](protocol_freeze.json). Исторические B01/B02 приняты внешним ревью и сохранены.
